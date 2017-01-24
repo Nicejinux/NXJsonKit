@@ -10,9 +10,16 @@
 #import <objc/runtime.h>
 #import "NXJsonKit.h"
 
+@implementation NXJsonKitConfig
+
+@end
+
+
 @interface NXJsonKit ()
 
 @property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, strong) NSMutableDictionary *arrayItemTargetConfig;
+@property (nonatomic, strong) NSMutableDictionary *dictionaryValueTargetConfig;
 
 @end
 
@@ -23,10 +30,45 @@
     self = [super init];
     if (self) {
         _data = data;
+        _arrayItemTargetConfig = [NSMutableDictionary new];
+        _dictionaryValueTargetConfig = [NSMutableDictionary new];
     }
     
     return self;
 }
+
+
+- (void)appendConfigForArrayItemTargetClass:(Class)class propertyName:(NSString *)name containerClass:(Class)containerClass
+{
+    if (!name || !class) {
+        return;
+    }
+    
+    NSMutableDictionary *dic = _arrayItemTargetConfig[NSStringFromClass(containerClass)];
+    if (!dic) {
+        dic = [NSMutableDictionary new];
+        _arrayItemTargetConfig[NSStringFromClass(containerClass)] = dic;
+    }
+    
+    dic[name] = NSStringFromClass(class);
+}
+
+
+- (void)appendConfigForDictionaryValueTargetClass:(Class)class key:(NSString *)key containerClass:(Class)containerClass
+{
+    if (!key || !class) {
+        return;
+    }
+    
+    NSMutableDictionary *dic = _dictionaryValueTargetConfig[NSStringFromClass(containerClass)];
+    if (!dic) {
+        dic = [NSMutableDictionary new];
+        _dictionaryValueTargetConfig[NSStringFromClass(containerClass)] = dic;
+    }
+    
+    dic[key] = NSStringFromClass(class);
+}
+
 
 
 - (id)mappedObjectForClass:(Class)class
@@ -44,7 +86,7 @@
     NSArray *allPropertyNames = [self allPropertyNamesForClass:class];
     for (NSString *name in allPropertyNames) {
         Class classOfProperty = [self classOfProperty:class named:name];
-        [self setValueForClass:classOfProperty propertyName:name instance:instance];
+        [self setValueForClass:classOfProperty propertyName:name instance:instance containerClass:class];
     }
 }
 
@@ -123,7 +165,7 @@
 }
 
 
-- (void)setValueForClass:(Class)class propertyName:(NSString *)name instance:(id)instance
+- (void)setValueForClass:(Class)class propertyName:(NSString *)name instance:(id)instance containerClass:(Class)containerClass
 {
     id object = _data[name];
     if (!object) {
@@ -145,16 +187,24 @@
     } else if ([object isKindOfClass:[NSNumber class]]) {
         [instance setValue:object forKey:name];
     } else if ([object isKindOfClass:[NSArray class]]) {
-        NSMutableArray *copiedObject = [self arrayValueFromObject:object class:class];
+        Class itemClass = [self arrayItemClassWithContainerClass:containerClass propertyName:name];
+        if (!itemClass) {
+            itemClass = class;
+        }
+        NSMutableArray *copiedObject = [self arrayValueFromObject:object class:itemClass propertyName:name];
         [instance setValue:copiedObject forKey:name];
     } else if ([object isKindOfClass:[NSDictionary class]]) {
-        NSMutableDictionary *copiedObject = [self dictionaryValueFromObject:object class:class];
+        Class valueClass = [self dictionaryValueClassWithContainerClass:containerClass key:name];
+        if (!valueClass) {
+            valueClass = class;
+        }
+        NSMutableDictionary *copiedObject = [self dictionaryValueFromObject:object class:valueClass key:name];
         [instance setValue:copiedObject forKey:name];
     }
 }
 
 
-- (NSMutableDictionary *)dictionaryValueFromObject:(NSDictionary *)objectDic class:(Class)class
+- (NSMutableDictionary *)dictionaryValueFromObject:(NSDictionary *)objectDic class:(Class)class key:(NSString *)keyForObjectDic
 {
     NSMutableDictionary *dic = [NSMutableDictionary new];
     
@@ -168,9 +218,9 @@
         } else if ([object isKindOfClass:[NSNumber class]]) {
             dic[key] = object;
         } else if ([object isKindOfClass:[NSArray class]]) {
-            dic[key] = [self arrayValueFromObject:object class:class];
+            dic[key] = [self arrayValueFromObject:object class:class propertyName:key];
         } else if ([object isKindOfClass:[NSDictionary class]]) {
-            dic[key] = [self dictionaryValueFromObject:object class:class];
+            dic[key] = [self dictionaryValueFromObject:object class:class key:key];
         }
     }
     
@@ -178,7 +228,7 @@
 }
 
 
-- (NSMutableArray *)arrayValueFromObject:(NSArray *)objectList class:(Class)class
+- (NSMutableArray *)arrayValueFromObject:(NSArray *)objectList class:(Class)class propertyName:(NSString *)name
 {
     NSMutableArray *array = [NSMutableArray new];
     
@@ -190,9 +240,9 @@
         } else if ([object isKindOfClass:[NSNumber class]]) {
             [array addObject:object];
         } else if ([object isKindOfClass:[NSArray class]]) {
-            [array addObject:[self arrayValueFromObject:object class:class]];
+            [array addObject:[self arrayValueFromObject:object class:class propertyName:name]];
         } else if ([object isKindOfClass:[NSDictionary class]]) {
-            [array addObject:[self dictionaryValueFromObject:object class:class]];
+            [array addObject:[self dictionaryValueFromObject:object class:class key:name]];
         }
     }
     
@@ -203,9 +253,34 @@
 - (id)userDefinedObjectFromObject:(id)object class:(Class)class
 {
     NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:object];
-    typeof(class) mappedObject = [jsonKit mappedObjectForClass:class];
+    typeof(class) mappedObject = (typeof(class))[jsonKit mappedObjectForClass:class];
     
     return mappedObject;
+}
+
+
+- (Class)arrayItemClassWithContainerClass:(Class)containerClass propertyName:(NSString *)name
+{
+    NSDictionary *dic = _arrayItemTargetConfig[NSStringFromClass(containerClass)];
+    NSString *className = dic[name];
+    Class targetClass = nil;
+    if (className) {
+        targetClass = NSClassFromString(className);
+    }
+    return targetClass;
+}
+
+
+- (Class)dictionaryValueClassWithContainerClass:(Class)containerClass key:(NSString *)key
+{
+    NSDictionary *dic = _dictionaryValueTargetConfig[NSStringFromClass(containerClass)];
+    
+    NSString *className = dic[key];
+    Class targetClass = nil;
+    if (className) {
+        targetClass = NSClassFromString(className);
+    }
+    return targetClass;
 }
 
 @end
