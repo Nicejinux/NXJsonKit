@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		72067B3B1E39C2F000E5C276 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B3A1E39C2F000E5C276 /* main.m */; };
+		72067B3E1E39C2F000E5C276 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B3D1E39C2F000E5C276 /* AppDelegate.m */; };
+		72067B411E39C2F000E5C276 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B401E39C2F000E5C276 /* ViewController.m */; };
+		72067B441E39C2F000E5C276 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72067B421E39C2F000E5C276 /* Main.storyboard */; };
+		72067B461E39C2F000E5C276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72067B451E39C2F000E5C276 /* Assets.xcassets */; };
+		72067B491E39C2F000E5C276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72067B471E39C2F000E5C276 /* LaunchScreen.storyboard */; };
+		72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B511E39C34700E5C276 /* NXJsonKit.m */; };
+		72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B531E39C34700E5C276 /* NXPropertyExtractor.m */; };
+		72067B5B1E39C57800E5C276 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B581E39C57800E5C276 /* People.m */; };
+		72067B5C1E39C57800E5C276 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B5A1E39C57800E5C276 /* Pet.m */; };
+		72067B601E39D55400E5C276 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B5F1E39D55400E5C276 /* Friend.m */; };
+		72067B631E39D64400E5C276 /* NXPropertyMapConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B621E39D64400E5C276 /* NXPropertyMapConfig.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		72067B361E39C2F000E5C276 /* NXJsonKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXJsonKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72067B3A1E39C2F000E5C276 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		72067B3C1E39C2F000E5C276 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		72067B3D1E39C2F000E5C276 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		72067B3F1E39C2F000E5C276 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		72067B401E39C2F000E5C276 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		72067B431E39C2F000E5C276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		72067B451E39C2F000E5C276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72067B481E39C2F000E5C276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		72067B4A1E39C2F000E5C276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72067B501E39C34700E5C276 /* NXJsonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXJsonKit.h; path = NXJsonKit/NXJsonKit.h; sourceTree = "<group>"; };
+		72067B511E39C34700E5C276 /* NXJsonKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXJsonKit.m; path = NXJsonKit/NXJsonKit.m; sourceTree = "<group>"; };
+		72067B521E39C34700E5C276 /* NXPropertyExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXPropertyExtractor.h; path = NXJsonKit/NXPropertyExtractor.h; sourceTree = "<group>"; };
+		72067B531E39C34700E5C276 /* NXPropertyExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXPropertyExtractor.m; path = NXJsonKit/NXPropertyExtractor.m; sourceTree = "<group>"; };
+		72067B571E39C57800E5C276 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
+		72067B581E39C57800E5C276 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
+		72067B591E39C57800E5C276 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
+		72067B5A1E39C57800E5C276 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
+		72067B5E1E39D55400E5C276 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		72067B5F1E39D55400E5C276 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		72067B611E39D64400E5C276 /* NXPropertyMapConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXPropertyMapConfig.h; sourceTree = "<group>"; };
+		72067B621E39D64400E5C276 /* NXPropertyMapConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXPropertyMapConfig.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		72067B331E39C2F000E5C276 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		72067B2D1E39C2F000E5C276 = {
+			isa = PBXGroup;
+			children = (
+				72067B381E39C2F000E5C276 /* NXJsonKitExample */,
+				72067B371E39C2F000E5C276 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		72067B371E39C2F000E5C276 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72067B361E39C2F000E5C276 /* NXJsonKitExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72067B381E39C2F000E5C276 /* NXJsonKitExample */ = {
+			isa = PBXGroup;
+			children = (
+				72067B3C1E39C2F000E5C276 /* AppDelegate.h */,
+				72067B3D1E39C2F000E5C276 /* AppDelegate.m */,
+				72067B3F1E39C2F000E5C276 /* ViewController.h */,
+				72067B401E39C2F000E5C276 /* ViewController.m */,
+				72067B5D1E39C57E00E5C276 /* Model */,
+				72067B561E39C34C00E5C276 /* NXJsonKit */,
+				72067B421E39C2F000E5C276 /* Main.storyboard */,
+				72067B451E39C2F000E5C276 /* Assets.xcassets */,
+				72067B471E39C2F000E5C276 /* LaunchScreen.storyboard */,
+				72067B4A1E39C2F000E5C276 /* Info.plist */,
+				72067B391E39C2F000E5C276 /* Supporting Files */,
+			);
+			path = NXJsonKitExample;
+			sourceTree = "<group>";
+		};
+		72067B391E39C2F000E5C276 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				72067B3A1E39C2F000E5C276 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		72067B561E39C34C00E5C276 /* NXJsonKit */ = {
+			isa = PBXGroup;
+			children = (
+				72067B501E39C34700E5C276 /* NXJsonKit.h */,
+				72067B511E39C34700E5C276 /* NXJsonKit.m */,
+				72067B611E39D64400E5C276 /* NXPropertyMapConfig.h */,
+				72067B621E39D64400E5C276 /* NXPropertyMapConfig.m */,
+				72067B521E39C34700E5C276 /* NXPropertyExtractor.h */,
+				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
+			);
+			name = NXJsonKit;
+			sourceTree = "<group>";
+		};
+		72067B5D1E39C57E00E5C276 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72067B5E1E39D55400E5C276 /* Friend.h */,
+				72067B5F1E39D55400E5C276 /* Friend.m */,
+				72067B571E39C57800E5C276 /* People.h */,
+				72067B581E39C57800E5C276 /* People.m */,
+				72067B591E39C57800E5C276 /* Pet.h */,
+				72067B5A1E39C57800E5C276 /* Pet.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		72067B351E39C2F000E5C276 /* NXJsonKitExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72067B4D1E39C2F000E5C276 /* Build configuration list for PBXNativeTarget "NXJsonKitExample" */;
+			buildPhases = (
+				72067B321E39C2F000E5C276 /* Sources */,
+				72067B331E39C2F000E5C276 /* Frameworks */,
+				72067B341E39C2F000E5C276 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NXJsonKitExample;
+			productName = NXJsonKitExample;
+			productReference = 72067B361E39C2F000E5C276 /* NXJsonKitExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		72067B2E1E39C2F000E5C276 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Nicejinux;
+				TargetAttributes = {
+					72067B351E39C2F000E5C276 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 72067B311E39C2F000E5C276 /* Build configuration list for PBXProject "NXJsonKitExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 72067B2D1E39C2F000E5C276;
+			productRefGroup = 72067B371E39C2F000E5C276 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				72067B351E39C2F000E5C276 /* NXJsonKitExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		72067B341E39C2F000E5C276 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72067B491E39C2F000E5C276 /* LaunchScreen.storyboard in Resources */,
+				72067B461E39C2F000E5C276 /* Assets.xcassets in Resources */,
+				72067B441E39C2F000E5C276 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		72067B321E39C2F000E5C276 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72067B5C1E39C57800E5C276 /* Pet.m in Sources */,
+				72067B5B1E39C57800E5C276 /* People.m in Sources */,
+				72067B411E39C2F000E5C276 /* ViewController.m in Sources */,
+				72067B631E39D64400E5C276 /* NXPropertyMapConfig.m in Sources */,
+				72067B601E39D55400E5C276 /* Friend.m in Sources */,
+				72067B3E1E39C2F000E5C276 /* AppDelegate.m in Sources */,
+				72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */,
+				72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */,
+				72067B3B1E39C2F000E5C276 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		72067B421E39C2F000E5C276 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72067B431E39C2F000E5C276 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		72067B471E39C2F000E5C276 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72067B481E39C2F000E5C276 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		72067B4B1E39C2F000E5C276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		72067B4C1E39C2F000E5C276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		72067B4E1E39C2F000E5C276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NXJsonKitExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.Nicejinux.NXJsonKitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		72067B4F1E39C2F000E5C276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NXJsonKitExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.Nicejinux.NXJsonKitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		72067B311E39C2F000E5C276 /* Build configuration list for PBXProject "NXJsonKitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72067B4B1E39C2F000E5C276 /* Debug */,
+				72067B4C1E39C2F000E5C276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72067B4D1E39C2F000E5C276 /* Build configuration list for PBXNativeTarget "NXJsonKitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72067B4E1E39C2F000E5C276 /* Debug */,
+				72067B4F1E39C2F000E5C276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 72067B2E1E39C2F000E5C276 /* Project object */;
+}
