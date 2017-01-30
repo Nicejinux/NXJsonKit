@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class NXPropertyMapConfig;
+@class NXArrayMapping;
+@class NXObjectMapping;
 
 @interface NXJsonKit : NSObject
 
 - (instancetype)initWithJsonData:(NSDictionary *)data;
 
-- (void)addConfigForArrayItem:(NXPropertyMapConfig *)config;
-- (void)addConfigForDictionaryValue:(NXPropertyMapConfig *)config;
+- (void)addMappingForObject:(NXObjectMapping *)mapping;
+- (void)addMappingForArrayItem:(NXArrayMapping *)mapping;
 
 - (id)mappedObjectForClass:(Class)class;
 

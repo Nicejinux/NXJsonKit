@@ -95,9 +95,19 @@
     
     if (splitPropertyAttributes.count > 0) {
         NSString *encodeType = splitPropertyAttributes[0];
-        NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];
-        NSString *className = splitEncodeType[1];
-        propertyClass = NSClassFromString(className);
+        if ([encodeType isEqualToString:@"TB"] ||   // BOOL
+            [encodeType isEqualToString:@"Tf"] ||   // float
+            [encodeType isEqualToString:@"Td"] ||   // CGFloat, double
+            [encodeType isEqualToString:@"Tq"] ||   // NSInteger
+            [encodeType isEqualToString:@"Ti"] ||   // int, enum
+            [encodeType isEqualToString:@"Tl"]) {   // long
+            NSLog(@"%@", propertyAttributes);
+            propertyClass = [NSNumber class];
+        } else if ([encodeType hasPrefix:@"T@"]) {
+            NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];
+            NSString *className = splitEncodeType[1];
+            propertyClass = NSClassFromString(className);
+        }
     }
     
     return propertyClass;

@@ -18,7 +18,8 @@
 		72067B5B1E39C57800E5C276 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B581E39C57800E5C276 /* People.m */; };
 		72067B5C1E39C57800E5C276 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B5A1E39C57800E5C276 /* Pet.m */; };
 		72067B601E39D55400E5C276 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B5F1E39D55400E5C276 /* Friend.m */; };
-		72067B631E39D64400E5C276 /* NXPropertyMapConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B621E39D64400E5C276 /* NXPropertyMapConfig.m */; };
+		72067B661E3F859F00E5C276 /* NXObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B651E3F859F00E5C276 /* NXObjectMapping.m */; };
+		72067B691E3F85B500E5C276 /* NXArrayMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B681E3F85B500E5C276 /* NXArrayMapping.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +43,10 @@
 		72067B5A1E39C57800E5C276 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
 		72067B5E1E39D55400E5C276 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		72067B5F1E39D55400E5C276 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
-		72067B611E39D64400E5C276 /* NXPropertyMapConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXPropertyMapConfig.h; sourceTree = "<group>"; };
-		72067B621E39D64400E5C276 /* NXPropertyMapConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXPropertyMapConfig.m; sourceTree = "<group>"; };
+		72067B641E3F859F00E5C276 /* NXObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXObjectMapping.h; sourceTree = "<group>"; };
+		72067B651E3F859F00E5C276 /* NXObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXObjectMapping.m; sourceTree = "<group>"; };
+		72067B671E3F85B500E5C276 /* NXArrayMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXArrayMapping.h; sourceTree = "<group>"; };
+		72067B681E3F85B500E5C276 /* NXArrayMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXArrayMapping.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +107,10 @@
 			children = (
 				72067B501E39C34700E5C276 /* NXJsonKit.h */,
 				72067B511E39C34700E5C276 /* NXJsonKit.m */,
-				72067B611E39D64400E5C276 /* NXPropertyMapConfig.h */,
-				72067B621E39D64400E5C276 /* NXPropertyMapConfig.m */,
+				72067B641E3F859F00E5C276 /* NXObjectMapping.h */,
+				72067B651E3F859F00E5C276 /* NXObjectMapping.m */,
+				72067B671E3F85B500E5C276 /* NXArrayMapping.h */,
+				72067B681E3F85B500E5C276 /* NXArrayMapping.m */,
 				72067B521E39C34700E5C276 /* NXPropertyExtractor.h */,
 				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
 			);
@@ -199,9 +204,10 @@
 				72067B5C1E39C57800E5C276 /* Pet.m in Sources */,
 				72067B5B1E39C57800E5C276 /* People.m in Sources */,
 				72067B411E39C2F000E5C276 /* ViewController.m in Sources */,
-				72067B631E39D64400E5C276 /* NXPropertyMapConfig.m in Sources */,
 				72067B601E39D55400E5C276 /* Friend.m in Sources */,
+				72067B661E3F859F00E5C276 /* NXObjectMapping.m in Sources */,
 				72067B3E1E39C2F000E5C276 /* AppDelegate.m in Sources */,
+				72067B691E3F85B500E5C276 /* NXArrayMapping.m in Sources */,
 				72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */,
 				72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */,
 				72067B3B1E39C2F000E5C276 /* main.m in Sources */,

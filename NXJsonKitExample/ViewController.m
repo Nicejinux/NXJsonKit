@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "NXJsonKit.h"
-#import "NXPropertyMapConfig.h"
+#import "NXArrayMapping.h"
+#import "NXObjectMapping.h"
 #import "People.h"
 #import "Pet.h"
 
@@ -24,17 +25,17 @@
 
     NSMutableDictionary *dic = [self createMock];
     NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic];
-    NXPropertyMapConfig *config = [NXPropertyMapConfig new];
-    config.parentClass = People.class;
-    config.targetClass = Pet.class;
-    config.propertyName = @"pets";
-    [jsonKit addConfigForArrayItem:config];
+    NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
+    [jsonKit addMappingForArrayItem:arrayMapping];
     
-    config = [NXPropertyMapConfig new];
-    config.parentClass = People.class;
-    config.targetClass = People.class;
-    config.propertyName = @"otherFriends";
-    [jsonKit addConfigForArrayItem:config];
+    arrayMapping = [NXArrayMapping mapForArrayItemClass:People.class itemKey:@"otherFriends" onClass:People.class];
+    [jsonKit addMappingForArrayItem:arrayMapping];
+
+    NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"others" toModelKey:@"otherFriends" onClass:People.class];
+    [jsonKit addMappingForObject:objectMapping];
+    
+    objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
+    [jsonKit addMappingForObject:objectMapping];
 
     People *people = [jsonKit mappedObjectForClass:[People class]];
     NSLog(@"%@", people);
@@ -45,8 +46,11 @@
 {
     NSMutableDictionary *dic = [NSMutableDictionary new];
 
-    dic[@"name"] = @"Nicejinux";
+    dic[@"user_name"] = @"Nicejinux";
     dic[@"age"] = @40;
+    dic[@"numberOfFriends"] = @3;
+    dic[@"hasGirlFriend"] = @(false);
+    dic[@"height"] = @178.5;
     dic[@"pets"] = @[
                         @{
                             @"kind":@"dog",
@@ -69,9 +73,9 @@
                                 }
                         };
     
-    dic[@"otherFriends"] = @[
+    dic[@"others"] = @[
                              @{
-                                 @"name" : @"Qneek",
+                                 @"user_name" : @"Qneek",
                                  @"age"  : @40,
                                  @"pets" : @[
                                                 @{
@@ -90,10 +94,10 @@
                                             ]
                                  },
                              @{
-                                 @"name" : @"Max",
+                                 @"user_name" : @"Max",
                                  @"age"  : @40
                              }, @{
-                                 @"name" : @"Kim",
+                                 @"user_name" : @"Kim",
                                  @"age"  : @40,
                                  @"pets" : @[
                                                 @{
