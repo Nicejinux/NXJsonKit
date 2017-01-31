@@ -15,8 +15,8 @@
 		72067B491E39C2F000E5C276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72067B471E39C2F000E5C276 /* LaunchScreen.storyboard */; };
 		72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B511E39C34700E5C276 /* NXJsonKit.m */; };
 		72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B531E39C34700E5C276 /* NXPropertyExtractor.m */; };
-		722694B01E40E3B400EF39CA /* NSMutableArray+SafeAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694AF1E40E3B400EF39CA /* NSMutableArray+SafeAdd.m */; };
-		722694B31E40E42800EF39CA /* NSMutableDictionary+SafeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B21E40E42800EF39CA /* NSMutableDictionary+SafeSet.m */; };
+		722694B81E40E93600EF39CA /* NSMutableArray+SafeAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */; };
+		722694B91E40E93600EF39CA /* NSMutableDictionary+SafeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */; };
 		72B9B2671E405DC6003B6B4F /* NXArrayMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */; };
 		72B9B2681E405DC6003B6B4F /* NXObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */; };
 		72B9B26F1E405DF4003B6B4F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26A1E405DF4003B6B4F /* Friend.m */; };
@@ -40,10 +40,10 @@
 		72067B511E39C34700E5C276 /* NXJsonKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXJsonKit.m; path = NXJsonKit/NXJsonKit.m; sourceTree = "<group>"; };
 		72067B521E39C34700E5C276 /* NXPropertyExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXPropertyExtractor.h; path = NXJsonKit/NXPropertyExtractor.h; sourceTree = "<group>"; };
 		72067B531E39C34700E5C276 /* NXPropertyExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXPropertyExtractor.m; path = NXJsonKit/NXPropertyExtractor.m; sourceTree = "<group>"; };
-		722694AE1E40E3B400EF39CA /* NSMutableArray+SafeAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SafeAdd.h"; sourceTree = "<group>"; };
-		722694AF1E40E3B400EF39CA /* NSMutableArray+SafeAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SafeAdd.m"; sourceTree = "<group>"; };
-		722694B11E40E42800EF39CA /* NSMutableDictionary+SafeSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeSet.h"; sourceTree = "<group>"; };
-		722694B21E40E42800EF39CA /* NSMutableDictionary+SafeSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SafeSet.m"; sourceTree = "<group>"; };
+		722694B41E40E93600EF39CA /* NSMutableArray+SafeAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SafeAdd.h"; path = "NXJsonKit/NSMutableArray+SafeAdd.h"; sourceTree = "<group>"; };
+		722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SafeAdd.m"; path = "NXJsonKit/NSMutableArray+SafeAdd.m"; sourceTree = "<group>"; };
+		722694B61E40E93600EF39CA /* NSMutableDictionary+SafeSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+SafeSet.h"; path = "NXJsonKit/NSMutableDictionary+SafeSet.h"; sourceTree = "<group>"; };
+		722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+SafeSet.m"; path = "NXJsonKit/NSMutableDictionary+SafeSet.m"; sourceTree = "<group>"; };
 		72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXArrayMapping.h; path = NXJsonKit/NXArrayMapping.h; sourceTree = "<group>"; };
 		72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXArrayMapping.m; path = NXJsonKit/NXArrayMapping.m; sourceTree = "<group>"; };
 		72B9B2651E405DC6003B6B4F /* NXObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXObjectMapping.h; path = NXJsonKit/NXObjectMapping.h; sourceTree = "<group>"; };
@@ -124,10 +124,10 @@
 				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
 				72B9B2751E4087ED003B6B4F /* NXClassAttribute.h */,
 				72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */,
-				722694AE1E40E3B400EF39CA /* NSMutableArray+SafeAdd.h */,
-				722694AF1E40E3B400EF39CA /* NSMutableArray+SafeAdd.m */,
-				722694B11E40E42800EF39CA /* NSMutableDictionary+SafeSet.h */,
-				722694B21E40E42800EF39CA /* NSMutableDictionary+SafeSet.m */,
+				722694B41E40E93600EF39CA /* NSMutableArray+SafeAdd.h */,
+				722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */,
+				722694B61E40E93600EF39CA /* NSMutableDictionary+SafeSet.h */,
+				722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */,
 			);
 			name = NXJsonKit;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				722694B01E40E3B400EF39CA /* NSMutableArray+SafeAdd.m in Sources */,
+				722694B81E40E93600EF39CA /* NSMutableArray+SafeAdd.m in Sources */,
 				72067B411E39C2F000E5C276 /* ViewController.m in Sources */,
 				72B9B2671E405DC6003B6B4F /* NXArrayMapping.m in Sources */,
 				72B9B2681E405DC6003B6B4F /* NXObjectMapping.m in Sources */,
@@ -227,7 +227,7 @@
 				72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */,
 				72067B3B1E39C2F000E5C276 /* main.m in Sources */,
 				72B9B2771E4087ED003B6B4F /* NXClassAttribute.m in Sources */,
-				722694B31E40E42800EF39CA /* NSMutableDictionary+SafeSet.m in Sources */,
+				722694B91E40E93600EF39CA /* NSMutableDictionary+SafeSet.m in Sources */,
 				72B9B2711E405DF4003B6B4F /* Pet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

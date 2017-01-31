@@ -1,6 +1,6 @@
 //
 //  NSMutableDictionary+SafeSet.h
-//  NXJsonKitExample
+//  NXJsonKit
 //
 //  Created by Nicejinux on 01/02/2017.
 //  Copyright © 2017 Nicejinux. All rights reserved.
