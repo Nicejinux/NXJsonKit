@@ -6,7 +6,7 @@
 
 # Why did I make it?
 
-I was looking for simple JSON mapper for my company project, and I found so many open sources for Json mapping in GitHub. But Those were not easy to customize and there were so many features.  
+I was looking for simple JSON mapper for the project, and I found so many open sources for JSON mapping in GitHub. But Those were not easy to customize and there were so many features.  
 
 We just needed ***simple*** and ***easy*** JSON mapper.  
 
