@@ -27,7 +27,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 ```objc
     {
         "user_name":"Nicejinux",
-        "age":40,
+        "age":39,
         "numberOfFriends":3,
         "hasGirlFriend":false,
         "height":178.5,
