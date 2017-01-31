@@ -1,12 +1,12 @@
 # NXJsonKit
 
-**NXJsonKit** can set values to object type values or user defined data model without coding from Json data.  
+**NXJsonKit** can set JSON dictionary values to object type values or user defined data model easily.  
 
 
 
 # Why did I make it?
 
-I was looking for simple Json mapper for my company project, and I found so many open sources for Json mapping in GitHub. But Those were not easy to customize and there were so many features.  
+I was looking for simple JSON mapper for my company project, and I found so many open sources for Json mapping in GitHub. But Those were not easy to customize and there were so many features.  
 
 We just needed ***simple*** and ***easy*** Json mapper.  
 
@@ -14,7 +14,7 @@ We just needed ***simple*** and ***easy*** Json mapper.
 
 # Features
 
-1. Set values to Model class from Json data automatically.
+1. Set values to Model class from JSON data automatically.
 2. Add mapping conditions for Array elements.
 3. Override key for Model property.
 4. Convert **`NSNumber`** type to primitive type (`NSInteger`, `CGFloat`, `enum`...) automatically.  
