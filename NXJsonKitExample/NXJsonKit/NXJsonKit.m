@@ -208,7 +208,8 @@
 - (id)userDefinedObjectFromObject:(id)object class:(Class)class
 {
     NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:object arrayItemMap:_arrayItemMap objectMap:_objectMap];
-    typeof(class) mappedObject = (typeof(class))[jsonKit mappedObjectForClass:class];
+    
+    id mappedObject = [jsonKit mappedObjectForClass:class];
     
     return mappedObject;
 }
