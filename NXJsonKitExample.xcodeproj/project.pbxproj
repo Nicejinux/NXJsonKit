@@ -15,11 +15,11 @@
 		72067B491E39C2F000E5C276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72067B471E39C2F000E5C276 /* LaunchScreen.storyboard */; };
 		72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B511E39C34700E5C276 /* NXJsonKit.m */; };
 		72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B531E39C34700E5C276 /* NXPropertyExtractor.m */; };
-		72067B5B1E39C57800E5C276 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B581E39C57800E5C276 /* People.m */; };
-		72067B5C1E39C57800E5C276 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B5A1E39C57800E5C276 /* Pet.m */; };
-		72067B601E39D55400E5C276 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B5F1E39D55400E5C276 /* Friend.m */; };
-		72067B661E3F859F00E5C276 /* NXObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B651E3F859F00E5C276 /* NXObjectMapping.m */; };
-		72067B691E3F85B500E5C276 /* NXArrayMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B681E3F85B500E5C276 /* NXArrayMapping.m */; };
+		72B9B2671E405DC6003B6B4F /* NXArrayMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */; };
+		72B9B2681E405DC6003B6B4F /* NXObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */; };
+		72B9B26F1E405DF4003B6B4F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26A1E405DF4003B6B4F /* Friend.m */; };
+		72B9B2701E405DF4003B6B4F /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26C1E405DF4003B6B4F /* People.m */; };
+		72B9B2711E405DF4003B6B4F /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26E1E405DF4003B6B4F /* Pet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,16 +37,16 @@
 		72067B511E39C34700E5C276 /* NXJsonKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXJsonKit.m; path = NXJsonKit/NXJsonKit.m; sourceTree = "<group>"; };
 		72067B521E39C34700E5C276 /* NXPropertyExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXPropertyExtractor.h; path = NXJsonKit/NXPropertyExtractor.h; sourceTree = "<group>"; };
 		72067B531E39C34700E5C276 /* NXPropertyExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXPropertyExtractor.m; path = NXJsonKit/NXPropertyExtractor.m; sourceTree = "<group>"; };
-		72067B571E39C57800E5C276 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
-		72067B581E39C57800E5C276 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
-		72067B591E39C57800E5C276 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
-		72067B5A1E39C57800E5C276 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
-		72067B5E1E39D55400E5C276 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
-		72067B5F1E39D55400E5C276 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
-		72067B641E3F859F00E5C276 /* NXObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXObjectMapping.h; sourceTree = "<group>"; };
-		72067B651E3F859F00E5C276 /* NXObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXObjectMapping.m; sourceTree = "<group>"; };
-		72067B671E3F85B500E5C276 /* NXArrayMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXArrayMapping.h; sourceTree = "<group>"; };
-		72067B681E3F85B500E5C276 /* NXArrayMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXArrayMapping.m; sourceTree = "<group>"; };
+		72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXArrayMapping.h; path = NXJsonKit/NXArrayMapping.h; sourceTree = "<group>"; };
+		72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXArrayMapping.m; path = NXJsonKit/NXArrayMapping.m; sourceTree = "<group>"; };
+		72B9B2651E405DC6003B6B4F /* NXObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXObjectMapping.h; path = NXJsonKit/NXObjectMapping.h; sourceTree = "<group>"; };
+		72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXObjectMapping.m; path = NXJsonKit/NXObjectMapping.m; sourceTree = "<group>"; };
+		72B9B2691E405DF4003B6B4F /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friend.h; path = Model/Friend.h; sourceTree = "<group>"; };
+		72B9B26A1E405DF4003B6B4F /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friend.m; path = Model/Friend.m; sourceTree = "<group>"; };
+		72B9B26B1E405DF4003B6B4F /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = People.h; path = Model/People.h; sourceTree = "<group>"; };
+		72B9B26C1E405DF4003B6B4F /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = People.m; path = Model/People.m; sourceTree = "<group>"; };
+		72B9B26D1E405DF4003B6B4F /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pet.h; path = Model/Pet.h; sourceTree = "<group>"; };
+		72B9B26E1E405DF4003B6B4F /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pet.m; path = Model/Pet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +107,10 @@
 			children = (
 				72067B501E39C34700E5C276 /* NXJsonKit.h */,
 				72067B511E39C34700E5C276 /* NXJsonKit.m */,
-				72067B641E3F859F00E5C276 /* NXObjectMapping.h */,
-				72067B651E3F859F00E5C276 /* NXObjectMapping.m */,
-				72067B671E3F85B500E5C276 /* NXArrayMapping.h */,
-				72067B681E3F85B500E5C276 /* NXArrayMapping.m */,
+				72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */,
+				72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */,
+				72B9B2651E405DC6003B6B4F /* NXObjectMapping.h */,
+				72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */,
 				72067B521E39C34700E5C276 /* NXPropertyExtractor.h */,
 				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
 			);
@@ -120,12 +120,12 @@
 		72067B5D1E39C57E00E5C276 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				72067B5E1E39D55400E5C276 /* Friend.h */,
-				72067B5F1E39D55400E5C276 /* Friend.m */,
-				72067B571E39C57800E5C276 /* People.h */,
-				72067B581E39C57800E5C276 /* People.m */,
-				72067B591E39C57800E5C276 /* Pet.h */,
-				72067B5A1E39C57800E5C276 /* Pet.m */,
+				72B9B2691E405DF4003B6B4F /* Friend.h */,
+				72B9B26A1E405DF4003B6B4F /* Friend.m */,
+				72B9B26B1E405DF4003B6B4F /* People.h */,
+				72B9B26C1E405DF4003B6B4F /* People.m */,
+				72B9B26D1E405DF4003B6B4F /* Pet.h */,
+				72B9B26E1E405DF4003B6B4F /* Pet.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,16 +201,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72067B5C1E39C57800E5C276 /* Pet.m in Sources */,
-				72067B5B1E39C57800E5C276 /* People.m in Sources */,
 				72067B411E39C2F000E5C276 /* ViewController.m in Sources */,
-				72067B601E39D55400E5C276 /* Friend.m in Sources */,
-				72067B661E3F859F00E5C276 /* NXObjectMapping.m in Sources */,
+				72B9B2671E405DC6003B6B4F /* NXArrayMapping.m in Sources */,
+				72B9B2681E405DC6003B6B4F /* NXObjectMapping.m in Sources */,
+				72B9B2701E405DF4003B6B4F /* People.m in Sources */,
+				72B9B26F1E405DF4003B6B4F /* Friend.m in Sources */,
 				72067B3E1E39C2F000E5C276 /* AppDelegate.m in Sources */,
-				72067B691E3F85B500E5C276 /* NXArrayMapping.m in Sources */,
 				72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */,
 				72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */,
 				72067B3B1E39C2F000E5C276 /* main.m in Sources */,
+				72B9B2711E405DF4003B6B4F /* Pet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

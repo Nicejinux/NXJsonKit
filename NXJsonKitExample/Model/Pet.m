@@ -1,13 +1,13 @@
 //
-//  People.m
-//  test
+//  Pet.m
+//  NXJsonKitExample
 //
 //  Created by Nicejinux on 23/01/2017.
 //  Copyright © 2017 Nicejinux. All rights reserved.
 //
 
-#import "People.h"
+#import "Pet.h"
 
-@implementation People
+@implementation Pet
 
 @end

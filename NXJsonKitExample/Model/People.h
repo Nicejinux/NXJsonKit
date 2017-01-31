@@ -1,6 +1,6 @@
 //
 //  People.h
-//  test
+//  NXJsonKitExample
 //
 //  Created by Nicejinux on 23/01/2017.
 //  Copyright © 2017 Nicejinux. All rights reserved.
