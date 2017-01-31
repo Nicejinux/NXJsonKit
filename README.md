@@ -25,24 +25,24 @@ We just needed ***simple*** and ***easy*** Json mapper.
 ### JSON Data
 
 ```objc
-{
-  "user_name":"Nicejinux",
-  "age":40,
-  "numberOfFriends":3,
-  "hasGirlFriend":false,
-  "height":178.5,
-  "pets":[
     {
-      "kind":"dog",
-      "name":"doggy",
-      "age":"2 years",
-    }, {
-      "kind":"cat",
-      "name":"kitty",
-      "age":"1 year"
+        "user_name":"Nicejinux",
+        "age":40,
+        "numberOfFriends":3,
+        "hasGirlFriend":false,
+        "height":178.5,
+        "pets":[
+            {
+                "kind":"dog",
+                "name":"doggy",
+                "age":"2 years",
+            }, {
+                "kind":"cat",
+                "name":"kitty",
+                "age":"1 year"
+            }
+        ]
     }
-  ]
-}
 ```
 
 
@@ -50,19 +50,27 @@ We just needed ***simple*** and ***easy*** Json mapper.
 ### Data Model
 
 ```objc
-// People Model
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSNumber *age;
-@property (nonatomic, strong) NSArray <Pet *> *pets;
-@property (nonatomic, assign) NSInteger numberOfFriends;
-@property (nonatomic, assign) BOOL hasGirlFriend;
-@property (nonatomic, assign) CGFloat height;
+    // People Model
+    @interface People : NSObject
+    
+    @property (nonatomic, strong) NSString *name;
+    @property (nonatomic, strong) NSNumber *age;
+    @property (nonatomic, strong) NSArray <Pet *> *pets;
+    @property (nonatomic, assign) NSInteger numberOfFriends;
+    @property (nonatomic, assign) BOOL hasGirlFriend;
+    @property (nonatomic, assign) CGFloat height;
+    
+    @end
 
+    // Pet Model
+    @interface Pet : NSObject
+    
+    @property (nonatomic, strong) NSString *kind;
+    @property (nonatomic, strong) NSString *name;
+    @property (nonatomic, strong) NSNumber *age;
+    
+    @end
 
-// Pet Model
-@property (nonatomic, strong) NSString *kind;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSNumber *age;
 ```
 
 
