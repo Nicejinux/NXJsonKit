@@ -135,7 +135,6 @@
             [encodeType isEqualToString:@"Tq"] ||   // NSInteger
             [encodeType isEqualToString:@"Ti"] ||   // int, enum
             [encodeType isEqualToString:@"Tl"]) {   // long
-            NSLog(@"%@", propertyAttributes);
             propertyClass = [NSNumber class];
         } else if ([encodeType hasPrefix:@"T@"]) {
             NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];

@@ -17,6 +17,8 @@
 		72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B531E39C34700E5C276 /* NXPropertyExtractor.m */; };
 		722694B81E40E93600EF39CA /* NSMutableArray+SafeAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */; };
 		722694B91E40E93600EF39CA /* NSMutableDictionary+SafeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */; };
+		722694C11E40FD4A00EF39CA /* NXJsonKitExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694C01E40FD4A00EF39CA /* NXJsonKitExampleTests.m */; };
+		722694CD1E410B4600EF39CA /* Peoples.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694CC1E410B4600EF39CA /* Peoples.m */; };
 		72B9B2671E405DC6003B6B4F /* NXArrayMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */; };
 		72B9B2681E405DC6003B6B4F /* NXObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */; };
 		72B9B26F1E405DF4003B6B4F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26A1E405DF4003B6B4F /* Friend.m */; };
@@ -24,6 +26,16 @@
 		72B9B2711E405DF4003B6B4F /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26E1E405DF4003B6B4F /* Pet.m */; };
 		72B9B2771E4087ED003B6B4F /* NXClassAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		722694C31E40FD4A00EF39CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72067B2E1E39C2F000E5C276 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72067B351E39C2F000E5C276;
+			remoteInfo = NXJsonKitExample;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		72067B361E39C2F000E5C276 /* NXJsonKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXJsonKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +56,11 @@
 		722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SafeAdd.m"; path = "NXJsonKit/NSMutableArray+SafeAdd.m"; sourceTree = "<group>"; };
 		722694B61E40E93600EF39CA /* NSMutableDictionary+SafeSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+SafeSet.h"; path = "NXJsonKit/NSMutableDictionary+SafeSet.h"; sourceTree = "<group>"; };
 		722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableDictionary+SafeSet.m"; path = "NXJsonKit/NSMutableDictionary+SafeSet.m"; sourceTree = "<group>"; };
+		722694BE1E40FD4A00EF39CA /* NXJsonKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NXJsonKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		722694C01E40FD4A00EF39CA /* NXJsonKitExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NXJsonKitExampleTests.m; sourceTree = "<group>"; };
+		722694C21E40FD4A00EF39CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		722694CB1E410B4600EF39CA /* Peoples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Peoples.h; path = Model/Peoples.h; sourceTree = "<group>"; };
+		722694CC1E410B4600EF39CA /* Peoples.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Peoples.m; path = Model/Peoples.m; sourceTree = "<group>"; };
 		72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXArrayMapping.h; path = NXJsonKit/NXArrayMapping.h; sourceTree = "<group>"; };
 		72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXArrayMapping.m; path = NXJsonKit/NXArrayMapping.m; sourceTree = "<group>"; };
 		72B9B2651E405DC6003B6B4F /* NXObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXObjectMapping.h; path = NXJsonKit/NXObjectMapping.h; sourceTree = "<group>"; };
@@ -66,6 +83,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		722694BB1E40FD4A00EF39CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				72067B381E39C2F000E5C276 /* NXJsonKitExample */,
+				722694BF1E40FD4A00EF39CA /* NXJsonKitExampleTests */,
 				72067B371E39C2F000E5C276 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				72067B361E39C2F000E5C276 /* NXJsonKitExample.app */,
+				722694BE1E40FD4A00EF39CA /* NXJsonKitExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,10 +165,21 @@
 				72B9B26A1E405DF4003B6B4F /* Friend.m */,
 				72B9B26B1E405DF4003B6B4F /* People.h */,
 				72B9B26C1E405DF4003B6B4F /* People.m */,
+				722694CB1E410B4600EF39CA /* Peoples.h */,
+				722694CC1E410B4600EF39CA /* Peoples.m */,
 				72B9B26D1E405DF4003B6B4F /* Pet.h */,
 				72B9B26E1E405DF4003B6B4F /* Pet.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		722694BF1E40FD4A00EF39CA /* NXJsonKitExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				722694C01E40FD4A00EF39CA /* NXJsonKitExampleTests.m */,
+				722694C21E40FD4A00EF39CA /* Info.plist */,
+			);
+			path = NXJsonKitExampleTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +202,24 @@
 			productReference = 72067B361E39C2F000E5C276 /* NXJsonKitExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		722694BD1E40FD4A00EF39CA /* NXJsonKitExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 722694C51E40FD4A00EF39CA /* Build configuration list for PBXNativeTarget "NXJsonKitExampleTests" */;
+			buildPhases = (
+				722694BA1E40FD4A00EF39CA /* Sources */,
+				722694BB1E40FD4A00EF39CA /* Frameworks */,
+				722694BC1E40FD4A00EF39CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				722694C41E40FD4A00EF39CA /* PBXTargetDependency */,
+			);
+			name = NXJsonKitExampleTests;
+			productName = NXJsonKitExampleTests;
+			productReference = 722694BE1E40FD4A00EF39CA /* NXJsonKitExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,6 +232,11 @@
 					72067B351E39C2F000E5C276 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
+					};
+					722694BD1E40FD4A00EF39CA = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 72067B351E39C2F000E5C276;
 					};
 				};
 			};
@@ -194,6 +254,7 @@
 			projectRoot = "";
 			targets = (
 				72067B351E39C2F000E5C276 /* NXJsonKitExample */,
+				722694BD1E40FD4A00EF39CA /* NXJsonKitExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -206,6 +267,13 @@
 				72067B491E39C2F000E5C276 /* LaunchScreen.storyboard in Resources */,
 				72067B461E39C2F000E5C276 /* Assets.xcassets in Resources */,
 				72067B441E39C2F000E5C276 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		722694BC1E40FD4A00EF39CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,13 +294,30 @@
 				72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */,
 				72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */,
 				72067B3B1E39C2F000E5C276 /* main.m in Sources */,
+				722694CD1E410B4600EF39CA /* Peoples.m in Sources */,
 				72B9B2771E4087ED003B6B4F /* NXClassAttribute.m in Sources */,
 				722694B91E40E93600EF39CA /* NSMutableDictionary+SafeSet.m in Sources */,
 				72B9B2711E405DF4003B6B4F /* Pet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		722694BA1E40FD4A00EF39CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				722694C11E40FD4A00EF39CA /* NXJsonKitExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		722694C41E40FD4A00EF39CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72067B351E39C2F000E5C276 /* NXJsonKitExample */;
+			targetProxy = 722694C31E40FD4A00EF39CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		72067B421E39C2F000E5C276 /* Main.storyboard */ = {
@@ -364,6 +449,30 @@
 			};
 			name = Release;
 		};
+		722694C61E40FD4A00EF39CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NXJsonKitExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.Nicejinux.NXJsonKitExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NXJsonKitExample.app/NXJsonKitExample";
+			};
+			name = Debug;
+		};
+		722694C71E40FD4A00EF39CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NXJsonKitExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.Nicejinux.NXJsonKitExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NXJsonKitExample.app/NXJsonKitExample";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -384,6 +493,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		722694C51E40FD4A00EF39CA /* Build configuration list for PBXNativeTarget "NXJsonKitExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				722694C61E40FD4A00EF39CA /* Debug */,
+				722694C71E40FD4A00EF39CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
