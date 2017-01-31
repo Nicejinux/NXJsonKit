@@ -14,6 +14,9 @@
 #import "NXArrayMapping.h"
 #import "NXClassAttribute.h"
 
+#import "NSMutableArray+SafeAdd.h"
+#import "NSMutableDictionary+SafeSet.h"
+
 @interface NXJsonKit ()
 
 @property (nonatomic, strong) NSDictionary *data;
@@ -115,6 +118,18 @@
 }
 
 
+- (id)objectForPropertyName:(NSString *)name onClass:(Class)onClass
+{
+    // check custom mapping key
+    NSString *key = [self objectKeyWithPropertyName:name onClass:onClass];
+    if (!key) {
+        key = name;
+    }
+    
+    return _data[key];
+}
+
+
 - (void)setValueForClassProperties:(NXClassAttribute *)attribute instance:(id)instance parentClass:(Class)parentClass
 {
     // parameter validation
@@ -123,12 +138,7 @@
     }
     
     // check custom mapping key
-    NSString *key = [self objectKeyWithPropertyName:attribute.propertyName onClass:parentClass];
-    if (!key) {
-        key = attribute.propertyName;
-    }
-    
-    id object = _data[key];
+    id object = [self objectForPropertyName:attribute.propertyName onClass:parentClass];
     if (!object) {
         return;
     }
@@ -141,20 +151,16 @@
     }
     
     if ([self isUserDefinedClass:attribute.classOfProperty]) {
-        id copiedObject = [self userDefinedObjectFromObject:object class:attribute.classOfProperty];
-        [instance setValue:copiedObject forKey:attribute.propertyName];
+        id mappedObject = [self userDefinedObjectFromObject:object class:attribute.classOfProperty];
+        [instance setValue:mappedObject forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSString class]]) {
-        NSString *copiedObject = [[NSString alloc] initWithString:object];
-        [instance setValue:copiedObject forKey:attribute.propertyName];
+        [instance setValue:[[NSString alloc] initWithString:object] forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSNumber class]]) {
         [instance setValue:object forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSArray class]]) {
-        Class itemClass = [self arrayItemClassWithPropertyName:attribute.propertyName onClass:parentClass];
-        if (!itemClass) {
-            itemClass = attribute.classOfProperty;
-        }
-        NSMutableArray *copiedObject = [self arrayValueFromObject:object itemClass:itemClass propertyName:attribute.propertyName];
-        [instance setValue:copiedObject forKey:attribute.propertyName];
+        Class itemClass = [self arrayItemClassWithPropertyName:attribute.propertyName onClass:parentClass defaultClass:attribute.classOfProperty];
+        NSMutableArray *mappedObject = [self arrayValueFromObject:object itemClass:itemClass propertyName:attribute.propertyName];
+        [instance setValue:mappedObject forKey:attribute.propertyName];
     }
 }
 
@@ -167,15 +173,15 @@
         id object = objectDic[key];
         
         if ([self isUserDefinedClass:class]) {
-            dic[key] = [self userDefinedObjectFromObject:object class:class];
+            [dic safeSetObject:[self userDefinedObjectFromObject:object class:class] forKey:key];
         } else if ([object isKindOfClass:[NSString class]]) {
-            dic[key] = [[NSString alloc] initWithString:object];
+            [dic safeSetObject:[[NSString alloc] initWithString:object] forKey:key];
         } else if ([object isKindOfClass:[NSNumber class]]) {
-            dic[key] = object;
+            [dic setObject:object forKey:key];
         } else if ([object isKindOfClass:[NSArray class]]) {
-            dic[key] = [self arrayValueFromObject:object itemClass:class propertyName:key];
+            [dic safeSetObject:[self arrayValueFromObject:object itemClass:class propertyName:key] forKey:key];
         } else if ([object isKindOfClass:[NSDictionary class]]) {
-            dic[key] = [self dictionaryValueFromObject:object class:class key:key];
+            [dic safeSetObject:[self dictionaryValueFromObject:object class:class key:key] forKey:key];
         }
     }
     
@@ -189,15 +195,15 @@
     
     for (id object in objectList) {
         if ([self isUserDefinedClass:itemClass]) {
-            [array addObject:[self userDefinedObjectFromObject:object class:itemClass]];
+            [array safeAddObject:[self userDefinedObjectFromObject:object class:itemClass]];
         } else if ([object isKindOfClass:[NSString class]]) {
-            [array addObject:[[NSString alloc] initWithString:object]];
+            [array safeAddObject:[[NSString alloc] initWithString:object]];
         } else if ([object isKindOfClass:[NSNumber class]]) {
             [array addObject:object];
         } else if ([object isKindOfClass:[NSArray class]]) {
-            [array addObject:[self arrayValueFromObject:object itemClass:itemClass propertyName:name]];
+            [array safeAddObject:[self arrayValueFromObject:object itemClass:itemClass propertyName:name]];
         } else if ([object isKindOfClass:[NSDictionary class]]) {
-            [array addObject:[self dictionaryValueFromObject:object class:itemClass key:name]];
+            [array safeAddObject:[self dictionaryValueFromObject:object class:itemClass key:name]];
         }
     }
     
@@ -215,20 +221,20 @@
 }
 
 
-- (Class)arrayItemClassWithPropertyName:(NSString *)name onClass:(Class)onClass
+- (Class)arrayItemClassWithPropertyName:(NSString *)name onClass:(Class)onClass defaultClass:(Class)defaultClass
 {
     if (!name || !onClass) {
-        return nil;
+        return defaultClass;
     }
     
     NSString *classKey = NSStringFromClass(onClass);
     if (!classKey) {
-        return nil;
+        return defaultClass;
     }
     
     NSDictionary *dic = _arrayItemMap[classKey];
     NSString *className = dic[name];
-    Class targetClass = nil;
+    Class targetClass = defaultClass;
     if (className) {
         targetClass = NSClassFromString(className);
     }
