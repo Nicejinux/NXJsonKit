@@ -1,14 +1,14 @@
 # NXJsonKit
 
-NXJsonKit can set values to object type values or user defined data model without coding from Json data.  
+**NXJsonKit** can set values to object type values or user defined data model without coding from Json data.  
 
 
 
 # Why did I make it?
 
-I was looking for simple Json mapper for my company project, and I found so many open sources for Json mapping in GitHub. But Those were not easy to customize and there were so many features.
+I was looking for simple Json mapper for my company project, and I found so many open sources for Json mapping in GitHub. But Those were not easy to customize and there were so many features.  
 
-We just needed simple and easy Json mapper.
+We just needed ***simple*** and ***easy*** Json mapper.  
 
 
 
@@ -17,15 +17,14 @@ We just needed simple and easy Json mapper.
 1. Set values to Model class from Json data automatically.
 2. Add mapping conditions for Array elements.
 3. Override key for Model property.
-4. Convert ***NSNumber*** type to primitive type (NSInteger, CGFloat, enum...) automatically.
-
+4. Convert **`NSNumber`** type to primitive type (`NSInteger`, `CGFloat`, `enum`...) automatically.  
 
 
 # Usage
 
 ### JSON Data
 
-```objective-c
+```objc
 {
   "user_name":"Nicejinux",
   "age":40,
@@ -50,7 +49,7 @@ We just needed simple and easy Json mapper.
 
 ### Data Model
 
-```objective-c
+```objc
 // People Model
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *age;
@@ -70,7 +69,7 @@ We just needed simple and easy Json mapper.
 
 ### Get object from JSON
 
-```objective-c
+```objc
 	// add mapping for array element
 	// pets (NSArray) element will map as a Pet class in the People class
 	NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
@@ -97,7 +96,7 @@ We just needed simple and easy Json mapper.
 This is [Jinwook Jeon](http://Nicejinux.NET).  
 I've been working as an iOS developer in Korea.   
 I'm waiting for your comments, suggestions, fixes, everything what you want to say.  
-Feel free to contact me.  
+Feel free to contact me.    
 
 
 
