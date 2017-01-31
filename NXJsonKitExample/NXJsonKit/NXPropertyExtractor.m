@@ -8,11 +8,13 @@
 
 #import <objc/runtime.h>
 #import "NXPropertyExtractor.h"
+#import "NXClassAttribute.h"
 
 @interface NXPropertyExtractor ()
 
 @property (nonatomic, strong) Class class;
-@property (nonatomic, strong) NSArray *propertyNames;
+@property (nonatomic, strong) NSMutableArray <NSString *> *propertyNames;
+@property (nonatomic, strong) NSMutableArray <NXClassAttribute *> *attributeList;
 
 @end
 
@@ -24,11 +26,14 @@
     if (self) {
         _class = class;
         _propertyNames = [self allPropertyNames];
+        _attributeList = [self allProperties];
     }
     
     return self;
 }
 
+
+# pragma mark - Public methods
 
 - (NSArray *)propertyNames
 {
@@ -39,6 +44,35 @@
 - (Class)classOfProperty:(NSString *)propertyName
 {
     return [self classOfProperty:_class named:propertyName];
+}
+
+
+- (NSArray <NXClassAttribute *> *)attributeList
+{
+    return _attributeList;
+}
+
+
+# pragma mark - Private methods
+
+- (NSMutableArray <NXClassAttribute *> *)allProperties
+{
+    NSMutableArray *properties = [NSMutableArray new];
+    if (!_propertyNames || _propertyNames.count == 0) {
+        return properties;
+    }
+    
+    for (NSString *propertyName in _propertyNames) {
+        Class classOfProperty = [self classOfProperty:propertyName];
+        if (classOfProperty) {
+            NXClassAttribute *attribute = [[NXClassAttribute alloc] init];
+            attribute.classOfProperty = classOfProperty;
+            attribute.propertyName = propertyName;
+            [properties addObject:attribute];
+        }
+    }
+    
+    return properties;
 }
 
 
@@ -63,7 +97,7 @@
 }
 
 
-- (NSArray *)allPropertyNames
+- (NSMutableArray *)allPropertyNames
 {
     if (!_class) {
         return nil;

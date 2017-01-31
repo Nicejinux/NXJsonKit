@@ -14,7 +14,9 @@
 @property (nonatomic, strong, readonly) Class itemClass;
 @property (nonatomic, strong, readonly) NSString *itemKey;
 
+// convenient initializer
 + (instancetype)mapForArrayItemClass:(Class)itemClass itemKey:(NSString *)itemKey onClass:(Class)onClass;
+
 - (instancetype)initWithArrayItemClass:(Class)itemClass itemKey:(NSString *)itemKey onClass:(Class)onClass;
 
 @end

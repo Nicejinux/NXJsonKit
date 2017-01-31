@@ -14,7 +14,9 @@
 @property (nonatomic, strong, readonly) NSString *modelKey;
 @property (nonatomic, strong, readonly) Class onClass;
 
+// convenient initializer
 + (instancetype)mapForJsonKey:(NSString *)jsonKey toModelKey:(NSString *)modelKey onClass:(Class)onClass;
+
 - (instancetype)initWithJsonKey:(NSString *)jsonKey toModelKey:(NSString *)modelKey onClass:(Class)onClass;
 
 @end

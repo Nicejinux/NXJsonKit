@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class NXClassAttribute;
+
 @interface NXPropertyExtractor : NSObject
 
 - (instancetype)initWithClass:(Class)class;
 
-- (NSArray *)propertyNames;
+- (NSArray <NSString *> *)propertyNames;
 - (Class)classOfProperty:(NSString *)propertyName;
+
+- (NSArray <NXClassAttribute *> *)attributeList;
 
 @end

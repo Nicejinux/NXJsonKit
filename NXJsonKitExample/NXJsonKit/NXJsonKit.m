@@ -12,6 +12,7 @@
 #import "NXPropertyExtractor.h"
 #import "NXObjectMapping.h"
 #import "NXArrayMapping.h"
+#import "NXClassAttribute.h"
 
 @interface NXJsonKit ()
 
@@ -91,10 +92,9 @@
 - (void)mapForClass:(Class)class instance:(id)instance
 {
     NXPropertyExtractor *extractor = [[NXPropertyExtractor alloc] initWithClass:class];
-    NSArray *propertyNames = [extractor propertyNames];
-    for (NSString *name in propertyNames) {
-        Class classOfProperty = [extractor classOfProperty:name];
-        [self setValueForClass:classOfProperty propertyName:name instance:instance parentClass:class];
+    NSArray *attributeList = [extractor attributeList];
+    for (NXClassAttribute *attribute in attributeList) {
+        [self setValueForClassProperties:attribute instance:instance parentClass:class];
     }
 }
 
@@ -115,17 +115,17 @@
 }
 
 
-- (void)setValueForClass:(Class)class propertyName:(NSString *)name instance:(id)instance parentClass:(Class)parentClass
+- (void)setValueForClassProperties:(NXClassAttribute *)attribute instance:(id)instance parentClass:(Class)parentClass
 {
     // parameter validation
-    if (!class || !name || !instance || !parentClass) {
+    if (!attribute.classOfProperty || !attribute.propertyName || !instance || !parentClass) {
         return;
     }
     
     // check custom mapping key
-    NSString *key = [self objectKeyWithPropertyName:name onClass:parentClass];
+    NSString *key = [self objectKeyWithPropertyName:attribute.propertyName onClass:parentClass];
     if (!key) {
-        key = name;
+        key = attribute.propertyName;
     }
     
     id object = _data[key];
@@ -133,27 +133,28 @@
         return;
     }
     
-    if (![object isKindOfClass:class]) {
-        if ([object isKindOfClass:[NSDictionary class]] && ![self isUserDefinedClass:class]) {
+    // if object is NSDictionary, should check whether object is custom class or not.
+    if (![object isKindOfClass:attribute.classOfProperty]) {
+        if ([object isKindOfClass:[NSDictionary class]] && ![self isUserDefinedClass:attribute.classOfProperty]) {
             return;
         }
     }
     
-    if ([self isUserDefinedClass:class]) {
-        id copiedObject = [self userDefinedObjectFromObject:object class:class];
-        [instance setValue:copiedObject forKey:name];
+    if ([self isUserDefinedClass:attribute.classOfProperty]) {
+        id copiedObject = [self userDefinedObjectFromObject:object class:attribute.classOfProperty];
+        [instance setValue:copiedObject forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSString class]]) {
         NSString *copiedObject = [[NSString alloc] initWithString:object];
-        [instance setValue:copiedObject forKey:name];
+        [instance setValue:copiedObject forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSNumber class]]) {
-            [instance setValue:object forKey:name];
+        [instance setValue:object forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSArray class]]) {
-        Class itemClass = [self arrayItemClassWithPropertyName:name onClass:parentClass];
+        Class itemClass = [self arrayItemClassWithPropertyName:attribute.propertyName onClass:parentClass];
         if (!itemClass) {
-            itemClass = class;
+            itemClass = attribute.classOfProperty;
         }
-        NSMutableArray *copiedObject = [self arrayValueFromObject:object itemClass:itemClass propertyName:name];
-        [instance setValue:copiedObject forKey:name];
+        NSMutableArray *copiedObject = [self arrayValueFromObject:object itemClass:itemClass propertyName:attribute.propertyName];
+        [instance setValue:copiedObject forKey:attribute.propertyName];
     }
 }
 

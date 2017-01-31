@@ -20,6 +20,7 @@
 		72B9B26F1E405DF4003B6B4F /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26A1E405DF4003B6B4F /* Friend.m */; };
 		72B9B2701E405DF4003B6B4F /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26C1E405DF4003B6B4F /* People.m */; };
 		72B9B2711E405DF4003B6B4F /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B26E1E405DF4003B6B4F /* Pet.m */; };
+		72B9B2771E4087ED003B6B4F /* NXClassAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		72B9B26C1E405DF4003B6B4F /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = People.m; path = Model/People.m; sourceTree = "<group>"; };
 		72B9B26D1E405DF4003B6B4F /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pet.h; path = Model/Pet.h; sourceTree = "<group>"; };
 		72B9B26E1E405DF4003B6B4F /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pet.m; path = Model/Pet.m; sourceTree = "<group>"; };
+		72B9B2751E4087ED003B6B4F /* NXClassAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXClassAttribute.h; path = NXJsonKit/NXClassAttribute.h; sourceTree = "<group>"; };
+		72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXClassAttribute.m; path = NXJsonKit/NXClassAttribute.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 				72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */,
 				72067B521E39C34700E5C276 /* NXPropertyExtractor.h */,
 				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
+				72B9B2751E4087ED003B6B4F /* NXClassAttribute.h */,
+				72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */,
 			);
 			name = NXJsonKit;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */,
 				72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */,
 				72067B3B1E39C2F000E5C276 /* main.m in Sources */,
+				72B9B2771E4087ED003B6B4F /* NXClassAttribute.m in Sources */,
 				72B9B2711E405DF4003B6B4F /* Pet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
