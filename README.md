@@ -78,23 +78,29 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 ### Get object from JSON
 
 ```objc
+- (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
+{	
 	// add mapping for array element
 	// pets (NSArray) element will map as a Pet class in the People class
 	NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
 
 	// add mapping for object (different object name)
 	// "user_name" which is from Json data will map to "name" property in the People class 
-    NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
+	NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
 
 	// initialize jsonkit with Json data
-    NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic];
+	NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic];
 
 	// add mapping conditions
-    [jsonKit addMappingForArrayItem:arrayMapping];
-    [jsonKit addMappingForObject:objectMapping];
+	[jsonKit addMappingForArrayItem:arrayMapping];
+	[jsonKit addMappingForObject:objectMapping];
 
 	// get mapped object that you specified class
 	People *people = [jsonKit mappedObjectForClass:[People class]];
+			.
+			.
+			.
+}
 ```
 
 # Logic
