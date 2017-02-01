@@ -97,9 +97,8 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 
 	// get mapped object that you specified class
 	People *people = [jsonKit mappedObjectForClass:[People class]];
-			.
-			.
-			.
+	
+	return people;
 }
 ```
 
