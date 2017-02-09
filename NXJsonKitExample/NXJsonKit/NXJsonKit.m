@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NSMutableDictionary *arrayItemMap;
 @property (nonatomic, strong) NSMutableDictionary *objectMap;
+@property (nonatomic, strong) NSMutableDictionary *dateMap;
+@property (nonatomic, strong) NSMutableDictionary *enumMap;
 
 @end
 
@@ -111,6 +113,8 @@
     } else if ([class isSubclassOfClass:[NSArray class]]) {
         return NO;
     } else if ([class isSubclassOfClass:[NSDictionary class]]) {
+        return NO;
+    } else if ([class isSubclassOfClass:[NSDate class]]) {
         return NO;
     }
     
