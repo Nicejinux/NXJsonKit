@@ -31,6 +31,8 @@ We just needed ***simple*** and ***easy*** JSON mapper.
         "numberOfFriends":3,
         "hasGirlFriend":false,
         "height":178.5,
+	"birthday":"20000101"
+	"job":"DEVELOPER"
         "pets":[
             {
                 "kind":"dog",
@@ -50,12 +52,22 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 ### Data Model
 
 ```objc
+
+    typedef NS_ENUM (NSInteger, JobType) {
+        JobTypeNone = 0,
+	JobTypeDoctor,
+	JobTypeDeveloper,
+	JobTypeDesigner,
+    };
+    
     // People Model
     @interface People : NSObject
     
     @property (nonatomic, strong) NSString *name;
     @property (nonatomic, strong) NSNumber *age;
     @property (nonatomic, strong) NSArray <Pet *> *pets;
+    @property (nonatomic, strong) NSDate *birthday;
+    @property (nonatomic, assign) JobType jobType;
     @property (nonatomic, assign) NSInteger numberOfFriends;
     @property (nonatomic, assign) BOOL hasGirlFriend;
     @property (nonatomic, assign) CGFloat height;
@@ -80,20 +92,35 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 ```objc
 - (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
 {	
-	// add mapping for array element
+	// create mapper for each mappings.
+        NXMapper *mapper = [[NXMapper alloc] init];
+	
+	// add array mapping with element class
 	// pets (NSArray) element will map as a Pet class in the People class
 	NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
-
-	// add mapping for object (different object name)
+	[mapper addArrayMapping:arrayMapping];
+	
+	// add object mapping with field name (different object name)
 	// "user_name" which is from Json data will map to "name" property in the People class 
 	NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
+	[mapper addObjectMapping:objectMapping];
 
-	// initialize jsonkit with Json data
-	NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic];
+	// "job" which is from Json data will map to "jobType" in the People class
+	objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
+	[mapper addObjectMapping:objectMapping];
 
-	// add mapping conditions
-	[jsonKit addMappingForArrayItem:arrayMapping];
-	[jsonKit addMappingForObject:objectMapping];
+	// add date mapping with formatter
+	// birthday will map as a NSDate with formatter (yyyyMMdd)
+        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+        [mapper addDateMapping:dateMapping];
+        
+        // add enum mapping with enum type list
+	// "jobType" which is from Json data "job" will map as JobType in the People class
+        NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
+        [mapper addEnumMapping:enumMapping];
+
+	// initialize jsonkit with Json data and Mapper
+        NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
 
 	// get mapped object that you specified class
 	People *people = [jsonKit mappedObjectForClass:[People class]];
