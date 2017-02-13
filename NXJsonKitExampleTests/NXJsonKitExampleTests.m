@@ -8,8 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import "NXJsonKit.h"
-#import "NXArrayMapping.h"
-#import "NXObjectMapping.h"
 #import "Peoples.h"
 #import "Friend.h"
 #import "People.h"
@@ -43,21 +41,34 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
         NSLog(@"START");
-        NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic];
+        NXMapper *mapper = [[NXMapper alloc] init];
+        
+        // array mapping
         NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
-        [jsonKit addMappingForArrayItem:arrayMapping];
+        [mapper addArrayMapping:arrayMapping];
         
         arrayMapping = [NXArrayMapping mapForArrayItemClass:People.class itemKey:@"otherFriends" onClass:People.class];
-        [jsonKit addMappingForArrayItem:arrayMapping];
-
-        arrayMapping = [NXArrayMapping mapForArrayItemClass:People.class itemKey:@"peopleList" onClass:Peoples.class];
-        [jsonKit addMappingForArrayItem:arrayMapping];
-
+        [mapper addArrayMapping:arrayMapping];
+        
+        // object mapping (rename object)
         NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"others" toModelKey:@"otherFriends" onClass:People.class];
-        [jsonKit addMappingForObject:objectMapping];
+        [mapper addObjectMapping:objectMapping];
         
         objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
-        [jsonKit addMappingForObject:objectMapping];
+        [mapper addObjectMapping:objectMapping];
+        
+        objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
+        [mapper addObjectMapping:objectMapping];
+        
+        // date mapping with formatter
+        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+        [mapper addDateMapping:dateMapping];
+        
+        // enum mapping with enum type list
+        NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
+        [mapper addEnumMapping:enumMapping];
+        
+        NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
         
         Peoples *peoples = [jsonKit mappedObjectForClass:[Peoples class]];
         NSLog(@"FINISH");
@@ -95,6 +106,18 @@
     People *people = [People new];
     people.name = dic[@"user_name"];
     people.age = dic[@"age"];
+
+    NSString *birthdayString = dic[@"birthday"];
+    NSDateFormatter *dateFormmater = [[NSDateFormatter alloc] init];
+    dateFormmater.dateFormat = @"yyyyMMdd";
+    dateFormmater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+    people.birthday = [dateFormmater dateFromString:birthdayString];
+
+    NSString *job = dic[@"job"];
+    NSArray *enumTypeList = @[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"];
+    NSUInteger index = [enumTypeList indexOfObject:job];
+    people.jobType = index;
+    
     NSNumber *numberOfFriends = dic[@"numberOfFriends"];
     if ([numberOfFriends isKindOfClass:[NSNumber class]]) {
         people.numberOfFriends = numberOfFriends.integerValue;

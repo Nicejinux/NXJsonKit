@@ -11,7 +11,7 @@
 @interface NXEnumMapping ()
 
 @property (nonatomic, strong) NSString *key;
-@property (nonatomic, strong) NSArray *enumKeyList;
+@property (nonatomic, strong) NSArray *enumTypeList;
 @property (nonatomic, strong) Class onClass;
 
 @end
@@ -19,17 +19,17 @@
 
 @implementation NXEnumMapping
 
-+ (instancetype)mapForEnumKey:(NSString *)key enumKeyList:(NSArray *)keyList onClass:(Class)onClass
++ (instancetype)mapForEnumKey:(NSString *)key enumTypeList:(NSArray *)typeList onClass:(Class)onClass
 {
-    return [[self alloc] initWithEnumKey:key enumKeyList:keyList onClass:onClass];
+    return [[self alloc] initWithEnumKey:key enumTypeList:typeList onClass:onClass];
 }
 
-- (instancetype)initWithEnumKey:(NSString *)key enumKeyList:(NSArray *)keyList onClass:(Class)onClass
+- (instancetype)initWithEnumKey:(NSString *)key enumTypeList:(NSArray *)typeList onClass:(Class)onClass
 {
     self = [super init];
     if (self) {
         _key = key;
-        _enumKeyList = keyList;
+        _enumTypeList = typeList;
         _onClass = onClass;
     }
     

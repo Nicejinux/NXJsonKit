@@ -11,11 +11,11 @@
 @interface NXEnumMapping : NSObject
 
 @property (nonatomic, strong, readonly) NSString *key;
-@property (nonatomic, strong, readonly) NSArray *enumKeyList;
+@property (nonatomic, strong, readonly) NSArray *enumTypeList;
 @property (nonatomic, strong, readonly) Class onClass;
 
-+ (instancetype)mapForEnumKey:(NSString *)key enumKeyList:(NSArray *)keyList onClass:(Class)onClass;
++ (instancetype)mapForEnumKey:(NSString *)key enumTypeList:(NSArray <NSString *> *)typeList onClass:(Class)onClass;
 
-- (instancetype)initWithEnumKey:(NSString *)key enumKeyList:(NSArray *)keyList onClass:(Class)onClass;
+- (instancetype)initWithEnumKey:(NSString *)key enumTypeList:(NSArray <NSString *> *)typeList onClass:(Class)onClass;
 
 @end

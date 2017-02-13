@@ -7,16 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class NXArrayMapping;
-@class NXObjectMapping;
+#import "NXMapper.h"
 
 @interface NXJsonKit : NSObject
 
 - (instancetype)initWithJsonData:(NSDictionary *)data;
-
-- (void)addMappingForObject:(NXObjectMapping *)mapping;
-- (void)addMappingForArrayItem:(NXArrayMapping *)mapping;
+- (instancetype)initWithJsonData:(NSDictionary *)data mapper:(NXMapper *)mapper;
 
 - (id)mappedObjectForClass:(Class)class;
 

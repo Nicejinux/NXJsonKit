@@ -8,8 +8,12 @@
 
 #import "ViewController.h"
 #import "NXJsonKit.h"
-#import "NXArrayMapping.h"
-#import "NXObjectMapping.h"
+//#import "NXMapper.h"
+//#import "NXArrayMapping.h"
+//#import "NXObjectMapping.h"
+//#import "NXDateMapping.h"
+//#import "NXEnumMapping.h"
+
 #import "People.h"
 #import "Pet.h"
 
@@ -24,19 +28,37 @@
     [super viewDidLoad];
 
     NSMutableDictionary *dic = [self createMock];
-    NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic];
+    
+    NXMapper *mapper = [[NXMapper alloc] init];
+    
+    // array mapping
     NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
-    [jsonKit addMappingForArrayItem:arrayMapping];
+    [mapper addArrayMapping:arrayMapping];
     
     arrayMapping = [NXArrayMapping mapForArrayItemClass:People.class itemKey:@"otherFriends" onClass:People.class];
-    [jsonKit addMappingForArrayItem:arrayMapping];
-
+    [mapper addArrayMapping:arrayMapping];
+    
+    // object mapping (rename object)
     NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"others" toModelKey:@"otherFriends" onClass:People.class];
-    [jsonKit addMappingForObject:objectMapping];
+    [mapper addObjectMapping:objectMapping];
     
     objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
-    [jsonKit addMappingForObject:objectMapping];
-
+    [mapper addObjectMapping:objectMapping];
+    
+    objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
+    [mapper addObjectMapping:objectMapping];
+    
+    // date mapping with formatter
+    NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+    [mapper addDateMapping:dateMapping];
+    
+    // enum mapping with enum type list
+    NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
+    [mapper addEnumMapping:enumMapping];
+    
+    // parse
+    NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
+    
     People *people = [jsonKit mappedObjectForClass:[People class]];
     NSLog(@"%@", people);
 }
@@ -51,6 +73,8 @@
     dic[@"numberOfFriends"] = @3;
     dic[@"hasGirlFriend"] = @(false);
     dic[@"height"] = @178.5;
+    dic[@"birthday"] = @"19781227";
+    dic[@"job"] = @"DEVELOPER";
     dic[@"pets"] = @[
                         @{
                             @"kind":@"dog",

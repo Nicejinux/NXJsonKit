@@ -20,63 +20,28 @@
 @interface NXJsonKit ()
 
 @property (nonatomic, strong) NSDictionary *data;
-@property (nonatomic, strong) NSMutableDictionary *arrayItemMap;
-@property (nonatomic, strong) NSMutableDictionary *objectMap;
-@property (nonatomic, strong) NSMutableDictionary *dateMap;
-@property (nonatomic, strong) NSMutableDictionary *enumMap;
+@property (nonatomic, strong) NXMapper *mapper;
 
 @end
+
 
 @implementation NXJsonKit
 
 - (instancetype)initWithJsonData:(NSDictionary *)data
 {
-    return [self initWithJsonData:data arrayItemMap:[NSMutableDictionary new] objectMap:[NSMutableDictionary new]];
+    return [self initWithJsonData:data mapper:[NXMapper new]];
 }
 
 
-- (instancetype)initWithJsonData:(NSDictionary *)data arrayItemMap:(NSMutableDictionary *)arrayDic objectMap:(NSMutableDictionary *)dictionaryDic
+- (instancetype)initWithJsonData:(NSDictionary *)data mapper:(NXMapper *)mapper
 {
     self = [super init];
     if (self) {
         _data = data;
-        _arrayItemMap = arrayDic;
-        _objectMap = dictionaryDic;
+        _mapper = mapper;
     }
     
     return self;
-}
-
-
-- (void)addMappingForArrayItem:(NXArrayMapping *)mapping
-{
-    if (!mapping.itemKey || !mapping.itemClass || !mapping.onClass) {
-        return;
-    }
-    
-    NSMutableDictionary *dic = _arrayItemMap[NSStringFromClass(mapping.onClass)];
-    if (!dic) {
-        dic = [NSMutableDictionary new];
-        _arrayItemMap[NSStringFromClass(mapping.onClass)] = dic;
-    }
-    
-    dic[mapping.itemKey] = NSStringFromClass(mapping.itemClass);
-}
-
-
-- (void)addMappingForObject:(NXObjectMapping *)mapping
-{
-    if (!mapping.jsonKey || !mapping.modelKey || !mapping.onClass) {
-        return;
-    }
-    
-    NSMutableDictionary *dic = _objectMap[NSStringFromClass(mapping.onClass)];
-    if (!dic) {
-        dic = [NSMutableDictionary new];
-        _objectMap[NSStringFromClass(mapping.onClass)] = dic;
-    }
-    
-    dic[mapping.modelKey] = mapping.jsonKey;
 }
 
 
@@ -106,6 +71,10 @@
 
 - (BOOL)isUserDefinedClass:(Class)class
 {
+    if (!class) {
+        return NO;
+    }
+    
     if ([class isSubclassOfClass:[NSString class]]) {
         return NO;
     } else if ([class isSubclassOfClass:[NSNumber class]]) {
@@ -125,12 +94,27 @@
 - (id)objectForPropertyName:(NSString *)name onClass:(Class)onClass
 {
     // check custom mapping key
-    NSString *key = [self objectKeyWithPropertyName:name onClass:onClass];
+    NSString *key = [_mapper objectKeyWithPropertyName:name onClass:onClass];
     if (!key) {
         key = name;
     }
     
-    return _data[key];
+    id data = _data[key];
+    if ([data isKindOfClass:[NSString class]]) {
+        // NSString type date string to NSDate
+        BOOL hasDateMapping = [_mapper hasDateMappingWithPropertyName:name onClass:onClass];
+        if (hasDateMapping) {
+            return [_mapper dateWithPropertyName:name dateString:data onClass:onClass];
+        }
+        
+        // NSString type enum string to enum
+        BOOL hasEnumMapping = [_mapper hasEnumMappingWithPropertyName:name onClass:onClass];
+        if (hasEnumMapping) {
+            return [NSNumber numberWithInteger:[_mapper enumWithPropertyName:name enumString:data onClass:onClass]];
+        }
+    }
+    
+    return data;
 }
 
 
@@ -159,10 +143,12 @@
         [instance setValue:mappedObject forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSString class]]) {
         [instance setValue:[[NSString alloc] initWithString:object] forKey:attribute.propertyName];
+    } else if ([object isKindOfClass:[NSDate class]]) {
+        [instance setValue:object forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSNumber class]]) {
         [instance setValue:object forKey:attribute.propertyName];
     } else if ([object isKindOfClass:[NSArray class]]) {
-        Class itemClass = [self arrayItemClassWithPropertyName:attribute.propertyName onClass:parentClass defaultClass:attribute.classOfProperty];
+        Class itemClass = [_mapper arrayItemClassWithPropertyName:attribute.propertyName onClass:parentClass defaultClass:attribute.classOfProperty];
         NSMutableArray *mappedObject = [self arrayValueFromObject:object itemClass:itemClass propertyName:attribute.propertyName];
         [instance setValue:mappedObject forKey:attribute.propertyName];
     }
@@ -217,49 +203,11 @@
 
 - (id)userDefinedObjectFromObject:(id)object class:(Class)class
 {
-    NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:object arrayItemMap:_arrayItemMap objectMap:_objectMap];
+    NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:object mapper:_mapper];
     
     id mappedObject = [jsonKit mappedObjectForClass:class];
     
     return mappedObject;
-}
-
-
-- (Class)arrayItemClassWithPropertyName:(NSString *)name onClass:(Class)onClass defaultClass:(Class)defaultClass
-{
-    if (!name || !onClass) {
-        return defaultClass;
-    }
-    
-    NSString *classKey = NSStringFromClass(onClass);
-    if (!classKey) {
-        return defaultClass;
-    }
-    
-    NSDictionary *dic = _arrayItemMap[classKey];
-    NSString *className = dic[name];
-    Class targetClass = defaultClass;
-    if (className) {
-        targetClass = NSClassFromString(className);
-    }
-    
-    return targetClass;
-}
-
-
-- (NSString *)objectKeyWithPropertyName:(NSString *)name onClass:(Class)onClass
-{
-    if (!name || !onClass) {
-        return nil;
-    }
-    
-    NSString *classKey = NSStringFromClass(onClass);
-    if (!classKey) {
-        return nil;
-    }
-
-    NSDictionary *dic = _objectMap[classKey];
-    return dic[name];
 }
 
 
