@@ -31,8 +31,8 @@ We just needed ***simple*** and ***easy*** JSON mapper.
         "numberOfFriends":3,
         "hasGirlFriend":false,
         "height":178.5,
-	"birthday":"20000101"
-	"job":"DEVELOPER"
+        "birthday":"20000101"
+        "job":"DEVELOPER"
         "pets":[
             {
                 "kind":"dog",
@@ -55,9 +55,9 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 
     typedef NS_ENUM (NSInteger, JobType) {
         JobTypeNone = 0,
-	JobTypeDoctor,
-	JobTypeDeveloper,
-	JobTypeDesigner,
+        JobTypeDoctor,
+        JobTypeDeveloper,
+        JobTypeDesigner,
     };
     
     // People Model
@@ -93,7 +93,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 - (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
 {	
 	// create mapper for each mappings.
-        NXMapper *mapper = [[NXMapper alloc] init];
+	NXMapper *mapper = [[NXMapper alloc] init];
 	
 	// add array mapping with element class
 	// pets (NSArray) element will map as a Pet class in the People class
@@ -111,16 +111,16 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 
 	// add date mapping with formatter
 	// birthday will map as a NSDate with formatter (yyyyMMdd)
-        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
-        [mapper addDateMapping:dateMapping];
+	NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+	[mapper addDateMapping:dateMapping];
         
-        // add enum mapping with enum type list
+	// add enum mapping with enum type list
 	// "jobType" which is from Json data "job" will map as JobType in the People class
-        NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
-        [mapper addEnumMapping:enumMapping];
+	NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
+	[mapper addEnumMapping:enumMapping];
 
 	// initialize jsonkit with Json data and Mapper
-        NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
+	NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
 
 	// get mapped object that you specified class
 	People *people = [jsonKit mappedObjectForClass:[People class]];
