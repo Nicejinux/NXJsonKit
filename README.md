@@ -14,10 +14,13 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 
 # Features
 
-1. Set values to Model class from JSON data automatically.
-2. Add mapping conditions for Array elements.
-3. Override key for Model property.
-4. Convert **`NSNumber`** type to primitive type (`NSInteger`, `CGFloat`, `enum`...) automatically.  
+1. Set values to Model class from **JSON** data automatically.
+2. Add mapping conditions for *`NSArray`* elements.
+3. Override key for Model **property**.
+4. Convert *`NSNumber`* type to primitive type (*`NSInteger`*, *`CGFloat`*, *`enum`*...) automatically.  
+5. Convert string type value to *`enum`*.  
+6. Convert string type date to *`NSDate`*.  
+7. Check value which should not be *`nil`*.  
 
 
 # Usage
@@ -146,7 +149,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 1. get all properties from class that you specified.
 2. check custom mapping conditions.
 3. get the data by property name or custom mapping condition.
-4. if you set **`<NXNotNullDelegate>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the Json value is ***nil***.
+4. if you set **`<NXNotNullDelegate>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the JSON value is ***nil***.
 5. if the class of data is a collection class (**`NSArray`**, **`NSDictionary`**) or user defined class, alloc new **`NXJsonKit`** and call recursively.
 6. set value to Model.
 
