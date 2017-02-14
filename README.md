@@ -146,9 +146,9 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 1. get all properties from class that you specified.
 2. check custom mapping conditions.
 3. get the data by property name or custom mapping condition.
-4. if the class of data is a collection class (**`NSArray`**, **`NSDictionary`**) or user defined class, alloc new **`NXJsonKit`** and call recursively.
-5. set value to Model.
-6. if you set **`<NXNotNullDelegate>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the Json value is nil.
+4. if you set **`<NXNotNullDelegate>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the Json value is ***nil***.
+5. if the class of data is a collection class (**`NSArray`**, **`NSDictionary`**) or user defined class, alloc new **`NXJsonKit`** and call recursively.
+6. set value to Model.
 
 
 # Author
