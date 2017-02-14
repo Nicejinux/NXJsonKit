@@ -7,8 +7,8 @@
 //
 
 @import XCTest;
+@import NXJsonKit;
 
-#import <NXJsonKit/NXJsonKit.h>
 #import "Peoples.h"
 #import "Friend.h"
 #import "People.h"
@@ -34,7 +34,7 @@
 }
 
 
-- (void)testPerformance1
+- (void)testPerformanceOfNXJsonKit
 {
     // This is an example of a performance test case.
     NSDictionary *dic = [self createMock];
@@ -72,7 +72,7 @@
 }
 
 
-- (void)testPerformance2
+- (void)testPerformanceManualParse
 {
     NSDictionary *dic = [self createMock];
     

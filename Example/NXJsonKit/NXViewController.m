@@ -7,9 +7,10 @@
 //
 
 #import "NXViewController.h"
-#import <NXJsonKit/NXJsonKit.h>
 #import "People.h"
 #import "Pet.h"
+
+@import NXJsonKit;
 
 @interface NXViewController ()
 
