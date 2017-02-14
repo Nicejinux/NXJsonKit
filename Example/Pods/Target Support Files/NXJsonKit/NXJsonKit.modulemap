@@ -1,0 +1,6 @@
+framework module NXJsonKit {
+  umbrella header "NXJsonKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

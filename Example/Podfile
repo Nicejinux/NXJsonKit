@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'NXJsonKit_Example' do
+  pod 'NXJsonKit', :path => '../'
+
+  target 'NXJsonKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

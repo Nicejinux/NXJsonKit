@@ -1,0 +1,16 @@
+PODS:
+  - NXJsonKit (0.1.0)
+
+DEPENDENCIES:
+  - NXJsonKit (from `../`)
+
+EXTERNAL SOURCES:
+  NXJsonKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NXJsonKit: fe95537ffeca68d0fe00b29bde65f4fc414b3192
+
+PODFILE CHECKSUM: 5e2ae8f5d342139904e797d666bbeac33f961690
+
+COCOAPODS: 1.2.0.beta.3

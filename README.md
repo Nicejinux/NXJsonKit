@@ -1,16 +1,18 @@
 # NXJsonKit
 
-**NXJsonKit** can set JSON dictionary values to object type values or user defined data model easily.  
+[![CI Status](http://img.shields.io/travis/nicejinux/NXJsonKit.svg?style=flat)](https://travis-ci.org/nicejinux/NXJsonKit)
+[![Version](https://img.shields.io/cocoapods/v/NXJsonKit.svg?style=flat)](http://cocoapods.org/pods/NXJsonKit)
+[![License](https://img.shields.io/cocoapods/l/NXJsonKit.svg?style=flat)](http://cocoapods.org/pods/NXJsonKit)
+[![Platform](https://img.shields.io/cocoapods/p/NXJsonKit.svg?style=flat)](http://cocoapods.org/pods/NXJsonKit)   
 
+**NXJsonKit** can set JSON dictionary values to object type values or user defined data model easily.    
 
-
+    
 # Why did I make it?
 
 I was looking for simple JSON mapper for the project, and I found so many open sources for JSON mapping in GitHub. But Those were not easy to customize and there were so many features.  
-
-We just needed ***simple*** and ***easy*** JSON mapper.  
-
-
+We just needed ***simple*** and ***easy*** JSON mapper.   
+   
 
 # Features
 
@@ -22,6 +24,17 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 6. Convert string type date to *`NSDate`*.  
 7. Check value which should not be *`nil`*.  
 
+# Requirements
+Tested on iOS 8.0 or higher   
+
+# Installation
+
+NXJsonKit is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "NXJsonKit"
+```
 
 # Usage
 
@@ -56,7 +69,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 
 ```objc
     // People.h
-    
+
     // enum type
     typedef NS_ENUM (NSInteger, JobType) {
         JobTypeNone = 0,
@@ -64,10 +77,10 @@ We just needed ***simple*** and ***easy*** JSON mapper.
         JobTypeDeveloper,
         JobTypeDesigner,
     };
-    
+
     // People Model
     @interface People : NSObject
-    
+
     @property (nonatomic, strong) NSString <NXNotNullProtocol> *name;
     @property (nonatomic, strong) NSNumber *age;
     @property (nonatomic, strong) NSArray <Pet *> *pets;
@@ -76,21 +89,21 @@ We just needed ***simple*** and ***easy*** JSON mapper.
     @property (nonatomic, assign) NSInteger numberOfFriends;
     @property (nonatomic, assign) BOOL hasGirlFriend;
     @property (nonatomic, assign) CGFloat height;
-    
+
     @end
 
     // Pet Model
     @interface Pet : NSObject
-    
+
     @property (nonatomic, strong) NSString *kind;
     @property (nonatomic, strong) NSString *name;
     @property (nonatomic, strong) NSNumber *age;
-    
+
     @end
-    
-    
+
+
     // People.m
-    
+
     // optional method for NXNotNullProtocol
     - (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass
     {
@@ -105,43 +118,43 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 ### Get object from JSON
 
 ```objc
-- (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
-{	
-	// create mapper for each mappings.
-	NXMapper *mapper = [[NXMapper alloc] init];
-	
-	// add array mapping with element class
-	// pets (NSArray) element will map as a Pet class in the People class
-	NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
-	[mapper addArrayMapping:arrayMapping];
-	
-	// add object mapping with field name (different object name)
-	// "user_name" which is from Json data will map to "name" property in the People class 
-	NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
-	[mapper addObjectMapping:objectMapping];
+    - (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
+    {	
+        // create mapper for each mappings.
+        NXMapper *mapper = [[NXMapper alloc] init];
 
-	// "job" which is from Json data will map to "jobType" in the People class
-	objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
-	[mapper addObjectMapping:objectMapping];
+        // add array mapping with element class
+        // pets (NSArray) element will map as a Pet class in the People class
+        NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
+        [mapper addArrayMapping:arrayMapping];
 
-	// add date mapping with formatter
-	// birthday will map as a NSDate with formatter (yyyyMMdd)
-	NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
-	[mapper addDateMapping:dateMapping];
-        
-	// add enum mapping with enum type list
-	// "jobType" which is from Json data "job" will map as JobType in the People class
-	NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
-	[mapper addEnumMapping:enumMapping];
+        // add object mapping with field name (different object name)
+        // "user_name" which is from Json data will map to "name" property in the People class 
+        NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
+        [mapper addObjectMapping:objectMapping];
 
-	// initialize jsonkit with Json data and Mapper
-	NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
+        // "job" which is from Json data will map to "jobType" in the People class
+        objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
+        [mapper addObjectMapping:objectMapping];
 
-	// get mapped object that you specified class
-	People *people = [jsonKit mappedObjectForClass:[People class]];
-	
-	return people;
-}
+        // add date mapping with formatter
+        // birthday will map as a NSDate with formatter (yyyyMMdd)
+        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+        [mapper addDateMapping:dateMapping];
+
+        // add enum mapping with enum type list
+        // "jobType" which is from Json data "job" will map as JobType in the People class
+        NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
+        [mapper addEnumMapping:enumMapping];
+
+        // initialize jsonkit with Json data and Mapper
+        NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
+
+        // get mapped object that you specified class
+        People *people = [jsonKit mappedObjectForClass:[People class]];
+
+        return people;
+    }
 ```
 
 # Logic
@@ -164,23 +177,23 @@ Feel free to contact me.
 
 # License
 
-	Copyright (c) 2017 Jinwook Jeon. All rights reserved.
+Copyright (c) 2017 Jinwook Jeon. All rights reserved.
 
-	Permission is hereby granted, free of charge, to any person obtaining a
-	copy of this software and associated documentation files (the "Software"),
-	to deal in the Software without restriction, including
-	without limitation the rights to use, copy, modify, merge, publish,
-	distribute, sublicense, and/or sell copies of the Software, and to
-	permit persons to whom the Software is furnished to do so, subject to
-	the following conditions:
-	
-	The above copyright notice and this permission notice shall be included
-	in all copies or substantial portions of the Software.
-	
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
