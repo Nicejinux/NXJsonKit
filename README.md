@@ -156,11 +156,10 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 
 # Author
 
-This is [Jinwook Jeon](http://Nicejinux.NET).  
-I've been working as an iOS developer in Korea.   
-I'm waiting for your comments, suggestions, fixes, everything what you want to say.  
-Feel free to contact me.    
-
+This is [Jinwook Jeon](http://Nicejinux.NET) (nicejinux@gmail.com)   
+I've been working as an iOS developer in Korea.  
+I'm waiting for your comments, suggestions, fixes, everything what you want to say. 
+Feel free to contact me. 
 
 
 # License
