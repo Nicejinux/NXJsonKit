@@ -1,7 +1,7 @@
 
 [![CI Status](http://img.shields.io/travis/nicejinux/NXJsonKit.svg?style=flat)](https://travis-ci.org/nicejinux/NXJsonKit)
 [![Version](https://img.shields.io/cocoapods/v/NXJsonKit.svg?style=flat)](http://cocoapods.org/pods/NXJsonKit)
-[![License](https://img.shields.io/cocoapods/l/NXJsonKit.svg?style=flat)](http://cocoapods.org/pods/NXJsonKit)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](http://cocoapods.org/pods/NXJsonKit)
 [![Platform](https://img.shields.io/cocoapods/p/NXJsonKit.svg?style=flat)](http://cocoapods.org/pods/NXJsonKit)   
   
   
