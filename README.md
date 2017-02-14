@@ -68,7 +68,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
     // People Model
     @interface People : NSObject
     
-    @property (nonatomic, strong) NSString <NXNotNullDelegate> *name;
+    @property (nonatomic, strong) NSString <NXNotNullProtocol> *name;
     @property (nonatomic, strong) NSNumber *age;
     @property (nonatomic, strong) NSArray <Pet *> *pets;
     @property (nonatomic, strong) NSDate *birthday;
@@ -91,7 +91,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
     
     // People.m
     
-    // optional delegate
+    // optional method for NXNotNullProtocol
     - (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass
     {
         NSLog(@"%@ (%@) property should not be null", propertyName, propertyClass);
@@ -149,7 +149,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 1. get all properties from class that you specified.
 2. check custom mapping conditions.
 3. get the data by property name or custom mapping condition.
-4. if you set **`<NXNotNullDelegate>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the JSON value is ***nil***.
+4. if you set **`<NXNotNullProtocol>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the JSON value is ***nil***.
 5. if the class of data is a collection class (**`NSArray`**, **`NSDictionary`**) or user defined class, alloc new **`NXJsonKit`** and call recursively.
 6. set value to Model.
 
