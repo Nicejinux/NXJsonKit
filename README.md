@@ -148,7 +148,7 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 3. get the data by property name or custom mapping condition.
 4. if the class of data is a collection class (**`NSArray`**, **`NSDictionary`**) or user defined class, alloc new **`NXJsonKit`** and call recursively.
 5. set value to Model.
-6. if you set <NXNotNullDelegate> to property which you want to check, <NXNotNullDelegate> will be called when it's value is nil.
+6. if you set **`<NXNotNullDelegate>`** to property which you want to check, **`<NXNotNullDelegate>`** will be called when the value is nil.
 
 
 # Author
