@@ -11,11 +11,11 @@
 @interface NXDateMapping : NSObject
 
 @property (nonatomic, strong, readonly) NSString *key;
-@property (nonatomic, strong, readonly) NSString *formatter;
+@property (nonatomic, strong, readonly) NSString *format;
 @property (nonatomic, strong, readonly) Class onClass;
 
-+ (instancetype)mapForDateKey:(NSString *)key formatter:(NSString *)formatter onClass:(Class)onClass;
++ (instancetype)mapForDateKey:(NSString *)key format:(NSString *)format onClass:(Class)onClass;
 
-- (instancetype)initWithDateKey:(NSString *)key formatter:(NSString *)formatter onClass:(Class)onClass;
+- (instancetype)initWithDateKey:(NSString *)key format:(NSString *)format onClass:(Class)onClass;
 
 @end

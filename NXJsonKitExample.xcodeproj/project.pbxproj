@@ -56,7 +56,7 @@
 		72067B511E39C34700E5C276 /* NXJsonKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXJsonKit.m; path = NXJsonKit/NXJsonKit.m; sourceTree = "<group>"; };
 		72067B521E39C34700E5C276 /* NXPropertyExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXPropertyExtractor.h; path = NXJsonKit/NXPropertyExtractor.h; sourceTree = "<group>"; };
 		72067B531E39C34700E5C276 /* NXPropertyExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXPropertyExtractor.m; path = NXJsonKit/NXPropertyExtractor.m; sourceTree = "<group>"; };
-		721D02671E52A23400CA8FC9 /* NXNotNullDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXNotNullDelegate.h; path = NXJsonKit/NXNotNullDelegate.h; sourceTree = "<group>"; };
+		721D02671E52A23400CA8FC9 /* NXNotNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXNotNull.h; path = NXJsonKit/NXNotNull.h; sourceTree = "<group>"; };
 		721D02681E52C3DA00CA8FC9 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = Model/BaseModel.h; sourceTree = "<group>"; };
 		721D02691E52C3DA00CA8FC9 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseModel.m; path = Model/BaseModel.m; sourceTree = "<group>"; };
 		722694B41E40E93600EF39CA /* NSMutableArray+SafeAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SafeAdd.h"; path = "NXJsonKit/NSMutableArray+SafeAdd.h"; sourceTree = "<group>"; };
@@ -155,25 +155,10 @@
 			children = (
 				72067B501E39C34700E5C276 /* NXJsonKit.h */,
 				72067B511E39C34700E5C276 /* NXJsonKit.m */,
-				721D02671E52A23400CA8FC9 /* NXNotNullDelegate.h */,
-				7256C07C1E4C6C1800EF6DDA /* NXMapper.h */,
-				7256C07D1E4C6C1800EF6DDA /* NXMapper.m */,
-				72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */,
-				72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */,
-				72B9B2651E405DC6003B6B4F /* NXObjectMapping.h */,
-				72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */,
-				7256C0761E4C635C00EF6DDA /* NXDateMapping.h */,
-				7256C0771E4C635C00EF6DDA /* NXDateMapping.m */,
-				7256C07F1E4C6C3800EF6DDA /* NXEnumMapping.h */,
-				7256C0801E4C6C3800EF6DDA /* NXEnumMapping.m */,
-				72067B521E39C34700E5C276 /* NXPropertyExtractor.h */,
-				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
-				72B9B2751E4087ED003B6B4F /* NXClassAttribute.h */,
-				72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */,
-				722694B41E40E93600EF39CA /* NSMutableArray+SafeAdd.h */,
-				722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */,
-				722694B61E40E93600EF39CA /* NSMutableDictionary+SafeSet.h */,
-				722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */,
+				721D71961E53453C000CBC92 /* Protocol */,
+				721D71941E53451E000CBC92 /* Mapper */,
+				721D71931E5344FE000CBC92 /* Property Extractor */,
+				721D71951E53452D000CBC92 /* Category */,
 			);
 			name = NXJsonKit;
 			sourceTree = "<group>";
@@ -193,6 +178,53 @@
 				721D02691E52C3DA00CA8FC9 /* BaseModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		721D71931E5344FE000CBC92 /* Property Extractor */ = {
+			isa = PBXGroup;
+			children = (
+				72067B521E39C34700E5C276 /* NXPropertyExtractor.h */,
+				72067B531E39C34700E5C276 /* NXPropertyExtractor.m */,
+				72B9B2751E4087ED003B6B4F /* NXClassAttribute.h */,
+				72B9B2761E4087ED003B6B4F /* NXClassAttribute.m */,
+			);
+			name = "Property Extractor";
+			sourceTree = "<group>";
+		};
+		721D71941E53451E000CBC92 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				7256C07C1E4C6C1800EF6DDA /* NXMapper.h */,
+				7256C07D1E4C6C1800EF6DDA /* NXMapper.m */,
+				72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */,
+				72B9B2641E405DC6003B6B4F /* NXArrayMapping.m */,
+				72B9B2651E405DC6003B6B4F /* NXObjectMapping.h */,
+				72B9B2661E405DC6003B6B4F /* NXObjectMapping.m */,
+				7256C0761E4C635C00EF6DDA /* NXDateMapping.h */,
+				7256C0771E4C635C00EF6DDA /* NXDateMapping.m */,
+				7256C07F1E4C6C3800EF6DDA /* NXEnumMapping.h */,
+				7256C0801E4C6C3800EF6DDA /* NXEnumMapping.m */,
+			);
+			name = Mapper;
+			sourceTree = "<group>";
+		};
+		721D71951E53452D000CBC92 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				722694B41E40E93600EF39CA /* NSMutableArray+SafeAdd.h */,
+				722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */,
+				722694B61E40E93600EF39CA /* NSMutableDictionary+SafeSet.h */,
+				722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		721D71961E53453C000CBC92 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				721D02671E52A23400CA8FC9 /* NXNotNull.h */,
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		722694BF1E40FD4A00EF39CA /* NXJsonKitExampleTests */ = {

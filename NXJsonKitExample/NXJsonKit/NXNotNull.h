@@ -1,5 +1,5 @@
 //
-//  NXNotNullDelegate.h
+//  NXNotNull.h
 //  NXJsonKit
 //
 //  Created by Nicejinux on 14/02/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol NXNotNullDelegate <NSObject>
+@protocol NXNotNull <NSObject>
 @optional
 
 - (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass;

@@ -60,8 +60,8 @@
         objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
         [mapper addObjectMapping:objectMapping];
         
-        // date mapping with formatter
-        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+        // date mapping with format
+        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" format:@"yyyyMMdd" onClass:People.class];
         [mapper addDateMapping:dateMapping];
         
         // enum mapping with enum type list

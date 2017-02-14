@@ -6,8 +6,6 @@
 //  Copyright © 2017 Nicejinux. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
 #import "BaseModel.h"
 
 @class Pet;
@@ -22,8 +20,8 @@ typedef NS_ENUM(NSInteger, NXJobType) {
 
 @interface People : BaseModel
 
-@property (nonatomic, strong) NSString <NXNotNullDelegate> *name;
-@property (nonatomic, strong) NSNumber <NXNotNullDelegate> *age;
+@property (nonatomic, strong) NSString <NXNotNull> *name;
+@property (nonatomic, strong) NSNumber <NXNotNull> *age;
 @property (nonatomic, strong) Friend *myfriend;
 @property (nonatomic, strong) NSDate *birthday;
 @property (nonatomic, assign) NXJobType jobType;

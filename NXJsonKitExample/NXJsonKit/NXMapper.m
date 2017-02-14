@@ -36,7 +36,7 @@
 
 - (void)addDateMapping:(NXDateMapping *)mapping
 {
-    if (!mapping.key || !mapping.formatter || !mapping.onClass) {
+    if (!mapping.key || !mapping.format || !mapping.onClass) {
         return;
     }
     
@@ -46,7 +46,7 @@
         _dateMap[NSStringFromClass(mapping.onClass)] = dic;
     }
     
-    dic[mapping.key] = mapping.formatter;
+    dic[mapping.key] = mapping.format;
 }
 
 
@@ -142,13 +142,13 @@
         return nil;
     }
 
-    NSString *formatter = [self dateFormatterWithPropertyName:name onClass:onClass];
-    if (!formatter) {
+    NSString *format = [self dateFormatWithPropertyName:name onClass:onClass];
+    if (!format) {
         return nil;
     }
     
     NSDateFormatter *dateFormmater = [[NSDateFormatter alloc] init];
-    dateFormmater.dateFormat = formatter;
+    dateFormmater.dateFormat = format;
     dateFormmater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
     
     NSDate *date = [dateFormmater dateFromString:dateString];
@@ -178,7 +178,7 @@
 
 - (BOOL)hasDateMappingWithPropertyName:(NSString *)name onClass:(Class)onClass
 {
-    if ([self dateFormatterWithPropertyName:name onClass:onClass]) {
+    if ([self dateFormatWithPropertyName:name onClass:onClass]) {
         return YES;
     }
     
@@ -197,7 +197,7 @@
 
 
 
-- (NSString *)dateFormatterWithPropertyName:(NSString *)name onClass:(Class)onClass
+- (NSString *)dateFormatWithPropertyName:(NSString *)name onClass:(Class)onClass
 {
     if (!name || !onClass) {
         return nil;

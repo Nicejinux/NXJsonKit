@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NXNotNullDelegate.h"
+#import <CoreGraphics/CoreGraphics.h>
+#import "NXNotNull.h"
 
-@interface BaseModel : NSObject <NXNotNullDelegate>
+@interface BaseModel : NSObject <NXNotNull>
 
 @end

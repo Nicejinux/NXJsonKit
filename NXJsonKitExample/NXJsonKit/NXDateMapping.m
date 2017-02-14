@@ -11,25 +11,25 @@
 @interface NXDateMapping ()
 
 @property (nonatomic, strong) NSString *key;
-@property (nonatomic, strong) NSString *formatter;
+@property (nonatomic, strong) NSString *format;
 @property (nonatomic, strong) Class onClass;
 
 @end
 
 @implementation NXDateMapping
 
-+ (instancetype)mapForDateKey:(NSString *)key formatter:(NSString *)formatter onClass:(Class)onClass
++ (instancetype)mapForDateKey:(NSString *)key format:(NSString *)format onClass:(Class)onClass
 {
-    return [[self alloc] initWithDateKey:key formatter:formatter onClass:onClass];
+    return [[self alloc] initWithDateKey:key format:format onClass:onClass];
 }
 
 
-- (instancetype)initWithDateKey:(NSString *)key formatter:(NSString *)formatter onClass:(Class)onClass
+- (instancetype)initWithDateKey:(NSString *)key format:(NSString *)format onClass:(Class)onClass
 {
     self = [super init];
     if (self) {
         _key = key;
-        _formatter = formatter;
+        _format = format;
         _onClass = onClass;
     }
     

@@ -12,7 +12,8 @@
 
 - (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass
 {
-    NSLog(@"%@ (%@) property should not be null", propertyName, propertyClass);
+    // you can assert or do something else here.
+    NSLog(@"%@ (%@) property should not be nil", propertyName, propertyClass);
 }
 
 @end

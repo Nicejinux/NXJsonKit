@@ -10,7 +10,7 @@
 #import "NXPropertyExtractor.h"
 #import "NXClassAttribute.h"
 
-static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
+static NSString * const NotNullProtocolName = @"<NXNotNull>";
 
 @interface NXPropertyExtractor ()
 
@@ -37,18 +37,6 @@ static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
 
 # pragma mark - Public methods
 
-- (NSArray *)propertyNames
-{
-    return _propertyNames;
-}
-
-
-- (NSString *)classNameOfProperty:(NSString *)propertyName
-{
-    return [self classNameOfProperty:_class named:propertyName];
-}
-
-
 - (NSArray <NXClassAttribute *> *)attributeList
 {
     return _attributeList;
@@ -65,15 +53,15 @@ static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
     }
     
     for (NSString *propertyName in _propertyNames) {
-        NSString *classNameOfProperty = [self classNameOfProperty:propertyName];
+        NSString *classNameOfProperty = [self classNameOfProperty:_class named:propertyName];
         Class classOfProperty = nil;
-        BOOL hasNotNullDelegate = NO;
+        BOOL hasNotNullProtocol = NO;
         
-        // NotNullDelegate 를 선언한 경우 "NSString<NSNotNullDelegate>" 형태로 이름이 생성되어
-        // 해당 프로토콜 이름을 삭제 해주어야 함.
-        if ([classNameOfProperty containsString:NotNullDelegateName]) {
-            classNameOfProperty = [classNameOfProperty stringByReplacingOccurrencesOfString:NotNullDelegateName withString:@""];
-            hasNotNullDelegate = YES;
+        // If you set <NXNotNull>, class name will be returned like this ("NSString<NSNotNull>")
+        // so, have to remove protocol name.
+        if ([classNameOfProperty containsString:NotNullProtocolName]) {
+            classNameOfProperty = [classNameOfProperty stringByReplacingOccurrencesOfString:NotNullProtocolName withString:@""];
+            hasNotNullProtocol = YES;
         }
         
         classOfProperty = NSClassFromString(classNameOfProperty);
@@ -81,7 +69,7 @@ static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
             NXClassAttribute *attribute = [[NXClassAttribute alloc] init];
             attribute.classOfProperty = classOfProperty;
             attribute.propertyName = propertyName;
-            attribute.hasNotNullDelegate = hasNotNullDelegate;
+            attribute.hasNotNullProtocol = hasNotNullProtocol;
             [properties addObject:attribute];
         }
     }
@@ -136,7 +124,6 @@ static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
 - (NSString *)classNameOfProperty:(Class)class named:(NSString *)name
 {
     // Get Class of property to be populated.
-//    Class propertyClass = nil;
     NSString *classNameOfProperty = nil;
     objc_property_t property = class_getProperty(class, [name UTF8String]);
     NSString *propertyAttributes = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
@@ -155,11 +142,6 @@ static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
             NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];
             if (splitEncodeType.count > 0) {
                 classNameOfProperty = splitEncodeType[1];
-//                if ([className containsString:@"<NXNotNullDelegate>"]) {
-//                    [className stringByReplacingOccurrencesOfString:@"<NXNotNullDelegate>" withString:@""];
-//                    
-//                }
-//                propertyClass = NSClassFromString(className);
             }
         }
     }

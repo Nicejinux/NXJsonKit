@@ -13,7 +13,7 @@
 #import "NXObjectMapping.h"
 #import "NXArrayMapping.h"
 #import "NXClassAttribute.h"
-#import "NXNotNullDelegate.h"
+#import "NXNotNull.h"
 
 #import "NSMutableArray+SafeAdd.h"
 #import "NSMutableDictionary+SafeSet.h"
@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NXMapper *mapper;
-@property (nonatomic, weak) id <NXNotNullDelegate> delegate;
+@property (nonatomic, weak) id <NXNotNull> delegate;
 
 @end
 
@@ -54,7 +54,7 @@
     }
     
     id mappedObject = [[class alloc] init];
-    if ([mappedObject conformsToProtocol:@protocol(NXNotNullDelegate)]) {
+    if ([mappedObject conformsToProtocol:@protocol(NXNotNull)]) {
         _delegate = mappedObject;
     }
 
@@ -120,7 +120,7 @@
     }
     
     if (!data) {
-        if (attribute.hasNotNullDelegate) {
+        if (attribute.hasNotNullProtocol) {
             if ([_delegate respondsToSelector:@selector(propertyWillSetNil:propertyClass:)]) {
                 [_delegate propertyWillSetNil:attribute.propertyName propertyClass:attribute.classOfProperty];
             }

@@ -13,6 +13,6 @@
 @property (nonatomic, strong) Class classOfProperty;
 @property (nonatomic, strong) NSString *propertyName;
 @property (nonatomic, strong) NSString *propertyType;
-@property (nonatomic, assign) BOOL hasNotNullDelegate;
+@property (nonatomic, assign) BOOL hasNotNullProtocol;
 
 @end
