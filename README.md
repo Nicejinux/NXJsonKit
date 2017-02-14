@@ -27,17 +27,27 @@ We just needed ***simple*** and ***easy*** JSON mapper.
 6. Convert string type date to *`NSDate`*.  
 7. Check value which should not be *`nil`*.  
 
-# Requirements
-Tested on iOS 8.0 or higher   
-
 # Installation
 
-NXJsonKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### CocoaPods
+You can use [CocoaPods](http://cocoapods.org/) to install `NXJsonKit` by adding it to your `Podfile`:
 
 ```ruby
-pod "NXJsonKit"
+platform :ios, '8.0'
+use_frameworks!
+pod 'NXJsonKit'
 ```
+
+### Carthage
+Create a `Cartfile` that lists the framework and run `carthage bootstrap`. Follow the [instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios) to add `$(SRCROOT)/Carthage/Build/iOS/NXJsonKit.framework` to an iOS project.
+
+```
+github "nicejinux/NXJsonKit"
+```
+### Manually
+1. Download and drop ```/NXJsonKit``` folder in your project.  
+2. Congratulations!  
+
 
 # Usage
 
@@ -71,47 +81,48 @@ pod "NXJsonKit"
 ### Data Model
 
 ```objc
-    // People.h
+// People.h
 
-    // enum type
-    typedef NS_ENUM (NSInteger, JobType) {
-        JobTypeNone = 0,
-        JobTypeDoctor,
-        JobTypeDeveloper,
-        JobTypeDesigner,
-    };
+// enum type
+typedef NS_ENUM (NSInteger, JobType) {
+    JobTypeNone = 0,
+    JobTypeDoctor,
+    JobTypeDeveloper,
+    JobTypeDesigner,
+};
 
-    // People Model
-    @interface People : NSObject
+// People Model
+@interface People : NSObject
 
-    @property (nonatomic, strong) NSString <NXNotNullProtocol> *name;
-    @property (nonatomic, strong) NSNumber *age;
-    @property (nonatomic, strong) NSArray <Pet *> *pets;
-    @property (nonatomic, strong) NSDate *birthday;
-    @property (nonatomic, assign) JobType jobType;
-    @property (nonatomic, assign) NSInteger numberOfFriends;
-    @property (nonatomic, assign) BOOL hasGirlFriend;
-    @property (nonatomic, assign) CGFloat height;
+@property (nonatomic, strong) NSString <NXNotNullProtocol> *name;
+@property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, strong) NSArray <Pet *> *pets;
+@property (nonatomic, strong) NSDate *birthday;
+@property (nonatomic, assign) JobType jobType;
+@property (nonatomic, assign) NSInteger numberOfFriends;
+@property (nonatomic, assign) BOOL hasGirlFriend;
+@property (nonatomic, assign) CGFloat height;
 
-    @end
+@end
 
-    // Pet Model
-    @interface Pet : NSObject
+// Pet Model
+@interface Pet : NSObject
 
-    @property (nonatomic, strong) NSString *kind;
-    @property (nonatomic, strong) NSString *name;
-    @property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, strong) NSString *kind;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *age;
 
-    @end
+@end
 
 
-    // People.m
+// People.m
 
-    // optional method for NXNotNullProtocol
-    - (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass
-    {
-        NSLog(@"%@ (%@) property should not be null", propertyName, propertyClass);
-    }
+// optional method for NXNotNullProtocol
+- (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass
+{
+    // You can assert or do something else here.
+    NSLog(@"%@ (%@) property should not be nil", propertyName, propertyClass);
+}
 
 
 ```
@@ -121,44 +132,45 @@ pod "NXJsonKit"
 ### Get object from JSON
 
 ```objc
-    - (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
-    {	
-        // create mapper for each mappings.
-        NXMapper *mapper = [[NXMapper alloc] init];
+- (People *)mapJsonToPeopleModelWithData:(NSDictionary *)dic 
+{	
+    // create mapper for each mappings.
+    NXMapper *mapper = [[NXMapper alloc] init];
 
-        // add array mapping with element class
-        // pets (NSArray) element will map as a Pet class in the People class
-        NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
-        [mapper addArrayMapping:arrayMapping];
+    // add array mapping with element class
+    // pets (NSArray) element will map as a Pet class in the People class
+    NXArrayMapping *arrayMapping = [NXArrayMapping mapForArrayItemClass:Pet.class itemKey:@"pets" onClass:People.class];
+    [mapper addArrayMapping:arrayMapping];
 
-        // add object mapping with field name (different object name)
-        // "user_name" which is from Json data will map to "name" property in the People class 
-        NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
-        [mapper addObjectMapping:objectMapping];
+    // add object mapping with field name (different object name)
+    // "user_name" which is from Json data will map to "name" property in the People class 
+    NXObjectMapping *objectMapping = [NXObjectMapping mapForJsonKey:@"user_name" toModelKey:@"name" onClass:People.class];
+    [mapper addObjectMapping:objectMapping];
 
-        // "job" which is from Json data will map to "jobType" in the People class
-        objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
-        [mapper addObjectMapping:objectMapping];
+    // "job" which is from Json data will map to "jobType" in the People class
+    objectMapping = [NXObjectMapping mapForJsonKey:@"job" toModelKey:@"jobType" onClass:People.class];
+    [mapper addObjectMapping:objectMapping];
 
-        // add date mapping with formatter
-        // birthday will map as a NSDate with formatter (yyyyMMdd)
-        NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
-        [mapper addDateMapping:dateMapping];
+    // add date mapping with formatter
+    // birthday will map as a NSDate with formatter (yyyyMMdd)
+    NXDateMapping *dateMapping = [NXDateMapping mapForDateKey:@"birthday" formatter:@"yyyyMMdd" onClass:People.class];
+    [mapper addDateMapping:dateMapping];
 
-        // add enum mapping with enum type list
-        // "jobType" which is from Json data "job" will map as JobType in the People class
-        NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
-        [mapper addEnumMapping:enumMapping];
+    // add enum mapping with enum type list
+    // "jobType" which is from Json data "job" will map as JobType in the People class
+    NXEnumMapping *enumMapping = [NXEnumMapping mapForEnumKey:@"jobType" enumTypeList:@[@"NONE", @"DOCTOR", @"DEVELOPER", @"DESIGNER"] onClass:People.class];
+    [mapper addEnumMapping:enumMapping];
 
-        // initialize jsonkit with Json data and Mapper
-        NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
+    // initialize jsonkit with Json data and Mapper
+    NXJsonKit *jsonKit = [[NXJsonKit alloc] initWithJsonData:dic mapper:mapper];
 
-        // get mapped object that you specified class
-        People *people = [jsonKit mappedObjectForClass:[People class]];
+    // get mapped object that you specified class
+    People *people = [jsonKit mappedObjectForClass:[People class]];
 
-        return people;
-    }
+    return people;
+}
 ```
+
 
 # Logic
 
@@ -172,13 +184,17 @@ pod "NXJsonKit"
 
 # Author
 
-This is [Jinwook Jeon](http://Nicejinux.NET) (nicejinux@gmail.com)   
+This is [Jinwook Jeon](http://Nicejinux.NET)   
 I've been working as an iOS developer in Korea.  
-I'm waiting for your comments, suggestions, fixes, everything what you want to say. 
+I'm waiting for your comments, suggestions, fixes, everything what you want to say.  
 Feel free to contact me. 
+  
+ - email : nicejinux@gmail.com
+ - facebook : http://facebook.com/Nicejinux
+ - homepage : http://Nicejinux.NET
 
 
-# License
+# MIT License
 
 Copyright (c) 2017 Jinwook Jeon. All rights reserved.
 
