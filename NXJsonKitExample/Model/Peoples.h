@@ -6,11 +6,11 @@
 //  Copyright © 2017 Nicejinux. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
 @class People;
 
-@interface Peoples : NSObject
+@interface Peoples : BaseModel
 
 @property (nonatomic, strong) NSArray <People *> *peopleList;
 

@@ -13,6 +13,7 @@
 #import "NXObjectMapping.h"
 #import "NXArrayMapping.h"
 #import "NXClassAttribute.h"
+#import "NXNotNullDelegate.h"
 
 #import "NSMutableArray+SafeAdd.h"
 #import "NSMutableDictionary+SafeSet.h"
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NXMapper *mapper;
+@property (nonatomic, weak) id <NXNotNullDelegate> delegate;
 
 @end
 
@@ -52,6 +54,9 @@
     }
     
     id mappedObject = [[class alloc] init];
+    if ([mappedObject conformsToProtocol:@protocol(NXNotNullDelegate)]) {
+        _delegate = mappedObject;
+    }
 
     [self mapForClass:(class) instance:mappedObject];
     
@@ -91,26 +96,34 @@
 }
 
 
-- (id)objectForPropertyName:(NSString *)name onClass:(Class)onClass
+- (id)objectForPropertyName:(NXClassAttribute *)attribute onClass:(Class)onClass
 {
     // check custom mapping key
-    NSString *key = [_mapper objectKeyWithPropertyName:name onClass:onClass];
+    NSString *key = [_mapper objectKeyWithPropertyName:attribute.propertyName onClass:onClass];
     if (!key) {
-        key = name;
+        key = attribute.propertyName;
     }
     
     id data = _data[key];
     if ([data isKindOfClass:[NSString class]]) {
         // NSString type date string to NSDate
-        BOOL hasDateMapping = [_mapper hasDateMappingWithPropertyName:name onClass:onClass];
+        BOOL hasDateMapping = [_mapper hasDateMappingWithPropertyName:attribute.propertyName onClass:onClass];
         if (hasDateMapping) {
-            return [_mapper dateWithPropertyName:name dateString:data onClass:onClass];
+            return [_mapper dateWithPropertyName:attribute.propertyName dateString:data onClass:onClass];
         }
         
         // NSString type enum string to enum
-        BOOL hasEnumMapping = [_mapper hasEnumMappingWithPropertyName:name onClass:onClass];
+        BOOL hasEnumMapping = [_mapper hasEnumMappingWithPropertyName:attribute.propertyName onClass:onClass];
         if (hasEnumMapping) {
-            return [NSNumber numberWithInteger:[_mapper enumWithPropertyName:name enumString:data onClass:onClass]];
+            return [NSNumber numberWithInteger:[_mapper enumWithPropertyName:attribute.propertyName enumString:data onClass:onClass]];
+        }
+    }
+    
+    if (!data) {
+        if (attribute.hasNotNullDelegate) {
+            if ([_delegate respondsToSelector:@selector(propertyWillSetNil:propertyClass:)]) {
+                [_delegate propertyWillSetNil:attribute.propertyName propertyClass:attribute.classOfProperty];
+            }
         }
     }
     
@@ -126,7 +139,7 @@
     }
     
     // check custom mapping key
-    id object = [self objectForPropertyName:attribute.propertyName onClass:parentClass];
+    id object = [self objectForPropertyName:attribute onClass:parentClass];
     if (!object) {
         return;
     }

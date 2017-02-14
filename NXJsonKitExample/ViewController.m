@@ -8,11 +8,6 @@
 
 #import "ViewController.h"
 #import "NXJsonKit.h"
-//#import "NXMapper.h"
-//#import "NXArrayMapping.h"
-//#import "NXObjectMapping.h"
-//#import "NXDateMapping.h"
-//#import "NXEnumMapping.h"
 
 #import "People.h"
 #import "Pet.h"
@@ -68,7 +63,7 @@
 {
     NSMutableDictionary *dic = [NSMutableDictionary new];
 
-    dic[@"user_name"] = @"Nicejinux";
+//    dic[@"user_name"] = @"Nicejinux";
     dic[@"age"] = @40;
     dic[@"numberOfFriends"] = @3;
     dic[@"hasGirlFriend"] = @(false);

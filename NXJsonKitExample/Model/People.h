@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "BaseModel.h"
 
 @class Pet;
 @class Friend;
@@ -19,10 +20,10 @@ typedef NS_ENUM(NSInteger, NXJobType) {
     NXJobTypeDesigner,
 };
 
-@interface People : NSObject
+@interface People : BaseModel
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, strong) NSString <NXNotNullDelegate> *name;
+@property (nonatomic, strong) NSNumber <NXNotNullDelegate> *age;
 @property (nonatomic, strong) Friend *myfriend;
 @property (nonatomic, strong) NSDate *birthday;
 @property (nonatomic, assign) NXJobType jobType;

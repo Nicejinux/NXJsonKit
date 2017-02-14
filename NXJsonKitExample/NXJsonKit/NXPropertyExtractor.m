@@ -10,6 +10,8 @@
 #import "NXPropertyExtractor.h"
 #import "NXClassAttribute.h"
 
+static NSString * const NotNullDelegateName = @"<NXNotNullDelegate>";
+
 @interface NXPropertyExtractor ()
 
 @property (nonatomic, strong) Class class;
@@ -41,9 +43,9 @@
 }
 
 
-- (Class)classOfProperty:(NSString *)propertyName
+- (NSString *)classNameOfProperty:(NSString *)propertyName
 {
-    return [self classOfProperty:_class named:propertyName];
+    return [self classNameOfProperty:_class named:propertyName];
 }
 
 
@@ -63,11 +65,23 @@
     }
     
     for (NSString *propertyName in _propertyNames) {
-        Class classOfProperty = [self classOfProperty:propertyName];
+        NSString *classNameOfProperty = [self classNameOfProperty:propertyName];
+        Class classOfProperty = nil;
+        BOOL hasNotNullDelegate = NO;
+        
+        // NotNullDelegate 를 선언한 경우 "NSString<NSNotNullDelegate>" 형태로 이름이 생성되어
+        // 해당 프로토콜 이름을 삭제 해주어야 함.
+        if ([classNameOfProperty containsString:NotNullDelegateName]) {
+            classNameOfProperty = [classNameOfProperty stringByReplacingOccurrencesOfString:NotNullDelegateName withString:@""];
+            hasNotNullDelegate = YES;
+        }
+        
+        classOfProperty = NSClassFromString(classNameOfProperty);
         if (classOfProperty) {
             NXClassAttribute *attribute = [[NXClassAttribute alloc] init];
             attribute.classOfProperty = classOfProperty;
             attribute.propertyName = propertyName;
+            attribute.hasNotNullDelegate = hasNotNullDelegate;
             [properties addObject:attribute];
         }
     }
@@ -119,10 +133,11 @@
 }
 
 
-- (Class)classOfProperty:(Class)class named:(NSString *)name
+- (NSString *)classNameOfProperty:(Class)class named:(NSString *)name
 {
     // Get Class of property to be populated.
-    Class propertyClass = nil;
+//    Class propertyClass = nil;
+    NSString *classNameOfProperty = nil;
     objc_property_t property = class_getProperty(class, [name UTF8String]);
     NSString *propertyAttributes = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
     NSArray *splitPropertyAttributes = [propertyAttributes componentsSeparatedByString:@","];
@@ -135,15 +150,21 @@
             [encodeType isEqualToString:@"Tq"] ||   // NSInteger
             [encodeType isEqualToString:@"Ti"] ||   // int, enum
             [encodeType isEqualToString:@"Tl"]) {   // long
-            propertyClass = [NSNumber class];
+            classNameOfProperty = @"NSNumber";
         } else if ([encodeType hasPrefix:@"T@"]) {
             NSArray *splitEncodeType = [encodeType componentsSeparatedByString:@"\""];
-            NSString *className = splitEncodeType[1];
-            propertyClass = NSClassFromString(className);
+            if (splitEncodeType.count > 0) {
+                classNameOfProperty = splitEncodeType[1];
+//                if ([className containsString:@"<NXNotNullDelegate>"]) {
+//                    [className stringByReplacingOccurrencesOfString:@"<NXNotNullDelegate>" withString:@""];
+//                    
+//                }
+//                propertyClass = NSClassFromString(className);
+            }
         }
     }
     
-    return propertyClass;
+    return classNameOfProperty;
 }
 
 

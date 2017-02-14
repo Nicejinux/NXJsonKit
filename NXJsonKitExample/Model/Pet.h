@@ -6,9 +6,9 @@
 //  Copyright © 2017 Nicejinux. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface Pet : NSObject
+@interface Pet : BaseModel
 
 @property (nonatomic, strong) NSString *kind;
 @property (nonatomic, strong) NSString *name;

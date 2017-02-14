@@ -15,6 +15,7 @@
 		72067B491E39C2F000E5C276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72067B471E39C2F000E5C276 /* LaunchScreen.storyboard */; };
 		72067B541E39C34700E5C276 /* NXJsonKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B511E39C34700E5C276 /* NXJsonKit.m */; };
 		72067B551E39C34700E5C276 /* NXPropertyExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 72067B531E39C34700E5C276 /* NXPropertyExtractor.m */; };
+		721D026A1E52C3DA00CA8FC9 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 721D02691E52C3DA00CA8FC9 /* BaseModel.m */; };
 		722694B81E40E93600EF39CA /* NSMutableArray+SafeAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */; };
 		722694B91E40E93600EF39CA /* NSMutableDictionary+SafeSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694B71E40E93600EF39CA /* NSMutableDictionary+SafeSet.m */; };
 		722694C11E40FD4A00EF39CA /* NXJsonKitExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 722694C01E40FD4A00EF39CA /* NXJsonKitExampleTests.m */; };
@@ -55,6 +56,9 @@
 		72067B511E39C34700E5C276 /* NXJsonKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXJsonKit.m; path = NXJsonKit/NXJsonKit.m; sourceTree = "<group>"; };
 		72067B521E39C34700E5C276 /* NXPropertyExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXPropertyExtractor.h; path = NXJsonKit/NXPropertyExtractor.h; sourceTree = "<group>"; };
 		72067B531E39C34700E5C276 /* NXPropertyExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NXPropertyExtractor.m; path = NXJsonKit/NXPropertyExtractor.m; sourceTree = "<group>"; };
+		721D02671E52A23400CA8FC9 /* NXNotNullDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NXNotNullDelegate.h; path = NXJsonKit/NXNotNullDelegate.h; sourceTree = "<group>"; };
+		721D02681E52C3DA00CA8FC9 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = Model/BaseModel.h; sourceTree = "<group>"; };
+		721D02691E52C3DA00CA8FC9 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseModel.m; path = Model/BaseModel.m; sourceTree = "<group>"; };
 		722694B41E40E93600EF39CA /* NSMutableArray+SafeAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SafeAdd.h"; path = "NXJsonKit/NSMutableArray+SafeAdd.h"; sourceTree = "<group>"; };
 		722694B51E40E93600EF39CA /* NSMutableArray+SafeAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SafeAdd.m"; path = "NXJsonKit/NSMutableArray+SafeAdd.m"; sourceTree = "<group>"; };
 		722694B61E40E93600EF39CA /* NSMutableDictionary+SafeSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableDictionary+SafeSet.h"; path = "NXJsonKit/NSMutableDictionary+SafeSet.h"; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 			children = (
 				72067B501E39C34700E5C276 /* NXJsonKit.h */,
 				72067B511E39C34700E5C276 /* NXJsonKit.m */,
+				721D02671E52A23400CA8FC9 /* NXNotNullDelegate.h */,
 				7256C07C1E4C6C1800EF6DDA /* NXMapper.h */,
 				7256C07D1E4C6C1800EF6DDA /* NXMapper.m */,
 				72B9B2631E405DC6003B6B4F /* NXArrayMapping.h */,
@@ -184,6 +189,8 @@
 				722694CC1E410B4600EF39CA /* Peoples.m */,
 				72B9B26D1E405DF4003B6B4F /* Pet.h */,
 				72B9B26E1E405DF4003B6B4F /* Pet.m */,
+				721D02681E52C3DA00CA8FC9 /* BaseModel.h */,
+				721D02691E52C3DA00CA8FC9 /* BaseModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721D026A1E52C3DA00CA8FC9 /* BaseModel.m in Sources */,
 				722694B81E40E93600EF39CA /* NSMutableArray+SafeAdd.m in Sources */,
 				72067B411E39C2F000E5C276 /* ViewController.m in Sources */,
 				7256C07E1E4C6C1800EF6DDA /* NXMapper.m in Sources */,

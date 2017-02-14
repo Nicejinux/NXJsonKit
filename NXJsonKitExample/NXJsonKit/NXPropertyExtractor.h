@@ -14,9 +14,6 @@
 
 - (instancetype)initWithClass:(Class)class;
 
-- (NSArray <NSString *> *)propertyNames;
-- (Class)classOfProperty:(NSString *)propertyName;
-
 - (NSArray <NXClassAttribute *> *)attributeList;
 
 @end
