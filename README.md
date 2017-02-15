@@ -117,7 +117,7 @@ typedef NS_ENUM (NSInteger, JobType) {
 
 // People.m
 
-// optional method for NXNotNullProtocol
+// optional method for NXNotNull protocol
 - (void)propertyWillSetNil:(NSString *)propertyName propertyClass:(Class)propertyClass
 {
     // You can assert or do something else here.
@@ -177,7 +177,7 @@ typedef NS_ENUM (NSInteger, JobType) {
 1. get all properties from class that you specified.
 2. check custom mapping conditions.
 3. get the data by property name or custom mapping condition.
-4. if you set **`<NXNotNullProtocol>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the JSON value is ***nil***.
+4. if you set **`<NXNotNull>`** to property which you want to check, **`propertyWillSetNil:propertyClass:`** method will be called if the JSON value is ***nil***.
 5. if the class of data is a collection class (**`NSArray`**, **`NSDictionary`**) or user defined class, alloc new **`NXJsonKit`** and call recursively.
 6. set value to Model.
 
