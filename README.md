@@ -94,7 +94,7 @@ typedef NS_ENUM (NSInteger, JobType) {
 // People Model
 @interface People : NSObject
 
-@property (nonatomic, strong) NSString <NXNotNullProtocol> *name;
+@property (nonatomic, strong) NSString <NXNotNull> *name;
 @property (nonatomic, strong) NSNumber *age;
 @property (nonatomic, strong) NSArray <Pet *> *pets;
 @property (nonatomic, strong) NSDate *birthday;
