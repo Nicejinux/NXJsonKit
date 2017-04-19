@@ -47,7 +47,7 @@
 }
 
 
-- (id)mappedObjectForClass:(Class)class
+- (id)mappedObjectForClass:(Class)klass
 {
     if (!class) {
         return nil;

@@ -22,7 +22,7 @@ static NSString * const NotNullProtocolName = @"<NXNotNull>";
 
 @implementation NXPropertyExtractor
 
-- (instancetype)initWithClass:(Class)class
+- (instancetype)initWithClass:(Class)klass
 {
     self = [super init];
     if (self) {
@@ -82,12 +82,17 @@ static NSString * const NotNullProtocolName = @"<NXNotNull>";
 {
     unsigned int count;
     objc_property_t *properties = class_copyPropertyList(klass, &count);
-    
+    NSArray *builtInProperties = @[@"hash", @"superclass", @"description", @"debugDescription"];
     NSMutableArray *nameList = [NSMutableArray array];
     
     for (NSUInteger i = 0; i < count; i++) {
         objc_property_t property = properties[i];
         NSString *name = [NSString stringWithUTF8String:property_getName(property)];
+        
+        if ([builtInProperties containsObject:name]) {
+            continue;
+        }
+    
         if (name) {
             [nameList addObject:name];
         }
