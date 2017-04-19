@@ -14,7 +14,7 @@
 - (instancetype)initWithJsonData:(NSDictionary *)data;
 - (instancetype)initWithJsonData:(NSDictionary *)data mapper:(NXMapper *)mapper;
 
-- (id)mappedObjectForClass:(Class)class;
+- (id)mappedObjectForClass:(Class)klass;
 
 @end
 

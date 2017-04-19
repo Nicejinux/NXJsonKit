@@ -22,7 +22,7 @@ static NSString * const NotNullProtocolName = @"<NXNotNull>";
 
 @implementation NXPropertyExtractor
 
-- (instancetype)initWithClass:(Class)class
+- (instancetype)initWithClass:(Class)klass
 {
     self = [super init];
     if (self) {

@@ -12,7 +12,7 @@
 
 @interface NXPropertyExtractor : NSObject
 
-- (instancetype)initWithClass:(Class)class;
+- (instancetype)initWithClass:(Class)klass;
 
 - (NSArray <NXClassAttribute *> *)attributeList;
 
