@@ -26,7 +26,7 @@ static NSString * const NotNullProtocolName = @"<NXNotNull>";
 {
     self = [super init];
     if (self) {
-        _class = class;
+        _class = klass;
         _propertyNames = [self allPropertyNames];
         _attributeList = [self allProperties];
     }

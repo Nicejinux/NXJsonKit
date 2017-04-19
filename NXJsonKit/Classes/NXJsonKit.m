@@ -49,16 +49,16 @@
 
 - (id)mappedObjectForClass:(Class)klass
 {
-    if (!class) {
+    if (!klass) {
         return nil;
     }
     
-    id mappedObject = [[class alloc] init];
+    id mappedObject = [[klass alloc] init];
     if ([mappedObject conformsToProtocol:@protocol(NXNotNull)]) {
         _delegate = mappedObject;
     }
 
-    [self mapForClass:(class) instance:mappedObject];
+    [self mapForClass:(klass) instance:mappedObject];
     
     return mappedObject;
 }
