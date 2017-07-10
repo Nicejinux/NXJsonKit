@@ -10,7 +10,7 @@
 
 @implementation NSMutableDictionary (SafeSet)
 
-- (void)safeSetObject:(id)object forKey:(NSString *)key
+- (void)nx_safeSetObject:(id)object forKey:(NSString *)key
 {
     if (object && key) {
         [self setObject:object forKey:key];

@@ -10,6 +10,6 @@
 
 @interface NSMutableArray (SafeAdd)
 
-- (void)safeAddObject:(id)object;
+- (void)nx_safeAddObject:(id)object;
 
 @end

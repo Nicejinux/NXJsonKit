@@ -10,7 +10,7 @@
 
 @implementation NSMutableArray (SafeAdd)
 
-- (void)safeAddObject:(id)object
+- (void)nx_safeAddObject:(id)object
 {
     if (object) {
         [self addObject:object];

@@ -10,6 +10,6 @@
 
 @interface NSMutableDictionary (SafeSet)
 
-- (void)safeSetObject:(id)object forKey:(NSString *)key;
+- (void)nx_safeSetObject:(id)object forKey:(NSString *)key;
 
 @end

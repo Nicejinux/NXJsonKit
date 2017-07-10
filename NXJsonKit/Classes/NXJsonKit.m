@@ -176,15 +176,15 @@
         id object = objectDic[key];
         
         if ([self isUserDefinedClass:class]) {
-            [dic safeSetObject:[self userDefinedObjectFromObject:object class:class] forKey:key];
+            [dic nx_safeSetObject:[self userDefinedObjectFromObject:object class:class] forKey:key];
         } else if ([object isKindOfClass:[NSString class]]) {
-            [dic safeSetObject:[[NSString alloc] initWithString:object] forKey:key];
+            [dic nx_safeSetObject:[[NSString alloc] initWithString:object] forKey:key];
         } else if ([object isKindOfClass:[NSNumber class]]) {
             [dic setObject:object forKey:key];
         } else if ([object isKindOfClass:[NSArray class]]) {
-            [dic safeSetObject:[self arrayValueFromObject:object itemClass:class propertyName:key] forKey:key];
+            [dic nx_safeSetObject:[self arrayValueFromObject:object itemClass:class propertyName:key] forKey:key];
         } else if ([object isKindOfClass:[NSDictionary class]]) {
-            [dic safeSetObject:[self dictionaryValueFromObject:object class:class key:key] forKey:key];
+            [dic nx_safeSetObject:[self dictionaryValueFromObject:object class:class key:key] forKey:key];
         }
     }
     
@@ -198,15 +198,15 @@
     
     for (id object in objectList) {
         if ([self isUserDefinedClass:itemClass]) {
-            [array safeAddObject:[self userDefinedObjectFromObject:object class:itemClass]];
+            [array nx_safeAddObject:[self userDefinedObjectFromObject:object class:itemClass]];
         } else if ([object isKindOfClass:[NSString class]]) {
-            [array safeAddObject:[[NSString alloc] initWithString:object]];
+            [array nx_safeAddObject:[[NSString alloc] initWithString:object]];
         } else if ([object isKindOfClass:[NSNumber class]]) {
             [array addObject:object];
         } else if ([object isKindOfClass:[NSArray class]]) {
-            [array safeAddObject:[self arrayValueFromObject:object itemClass:itemClass propertyName:name]];
+            [array nx_safeAddObject:[self arrayValueFromObject:object itemClass:itemClass propertyName:name]];
         } else if ([object isKindOfClass:[NSDictionary class]]) {
-            [array safeAddObject:[self dictionaryValueFromObject:object class:itemClass key:name]];
+            [array nx_safeAddObject:[self dictionaryValueFromObject:object class:itemClass key:name]];
         }
     }
     
