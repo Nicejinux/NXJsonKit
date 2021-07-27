@@ -6,7 +6,7 @@
   
   
 
-# NXJsonKit
+# NXJSONKit
 
 **NXJsonKit** can set JSON dictionary values to object type values or user defined data model easily.    
 
